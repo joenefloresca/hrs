@@ -16,3 +16,8 @@ Route::get('/', function () {
 });
 
 Route::resource('requestpayment', 'RequestPaymentController');
+Route::resource('changeschedule', 'ChangeScheduleController');
+Route::resource('timechange', 'TimeChangeController');
+Route::resource('leaverequest', 'LeaveRequestController');
+Route::resource('paydescrepancies', 'PayDescrepanciesController');
+

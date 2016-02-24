@@ -62,6 +62,30 @@
                     </ul>
                 </li>
                 
+                <li class="active">
+                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Pay Descrepancies</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li class="active"><a href="{{ url('paydescrepancies/create') }}">Submit Form</a></li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Time Change</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li class="active"><a href="{{ url('timechange/create') }}">Submit Form</a></li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Leave Request</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li class="active"><a href="{{ url('leaverequest/create') }}">Submit Form</a></li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Time IN/OUT Change</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li class="active"><a href="{{ url('timechange/create') }}">Submit Form</a></li>
+                    </ul>
+                </li>
                 
             </ul>
 
