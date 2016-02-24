@@ -12,8 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+Route::get('home', function () {
+    return view('home');
+});
+
+Route::controllers([
+	'auth' => 'Auth\AuthController',
+	'password' => 'Auth\PasswordController',
+]);
 
 Route::resource('requestpayment', 'RequestPaymentController');
 Route::resource('changeschedule', 'ChangeScheduleController');

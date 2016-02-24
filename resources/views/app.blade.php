@@ -33,7 +33,7 @@
                             <li><a href="contacts.html">Contacts</a></li>
                             <li><a href="mailbox.html">Mailbox</a></li>
                             <li class="divider"></li>
-                            <li><a href="login.html">Logout</a></li>
+                            <li><a href="{{ url('auth/logout') }}">Logout</a></li>
                         </ul>
                     </div>
                     <div class="logo-element">
@@ -51,37 +51,36 @@
                     </ul>
                 </li>
                
-               
-                
+            
                 
                 
                 <li class="active">
-                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Request of Payment</span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-money"></i> <span class="nav-label">Request of Payment</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="active"><a href="{{ url('requestpayment/create') }}">Submit Form</a></li>
                     </ul>
                 </li>
                 
                 <li class="active">
-                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Pay Descrepancies</span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-eraser"></i> <span class="nav-label">Pay Descrepancies</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="active"><a href="{{ url('paydescrepancies/create') }}">Submit Form</a></li>
                     </ul>
                 </li>
                 <li class="active">
-                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Time Change</span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-clock-o"></i> <span class="nav-label">Time Change</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="active"><a href="{{ url('timechange/create') }}">Submit Form</a></li>
                     </ul>
                 </li>
                 <li class="active">
-                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Leave Request</span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-calendar-o"></i> <span class="nav-label">Leave Request</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="active"><a href="{{ url('leaverequest/create') }}">Submit Form</a></li>
                     </ul>
                 </li>
                 <li class="active">
-                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Time IN/OUT Change</span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-calendar"></i> <span class="nav-label">Time IN/OUT Change</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="active"><a href="{{ url('timechange/create') }}">Submit Form</a></li>
                     </ul>
@@ -105,7 +104,7 @@
         </div>
             <ul class="nav navbar-top-links navbar-right">
                 <li>
-                    <span class="m-r-sm text-muted welcome-message">Welcome to INSPINIA+ Admin Theme.</span>
+                    <span class="m-r-sm text-muted welcome-message">Welcome to QDF HRS.</span>
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
@@ -206,7 +205,7 @@
 
 
                 <li>
-                    <a href="login.html">
+                    <a href="{{ url('auth/logout') }}">
                         <i class="fa fa-sign-out"></i> Log out
                     </a>
                 </li>
