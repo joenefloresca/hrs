@@ -23,7 +23,7 @@
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element"> <span>
-                            <img alt="image" class="img-circle" src="img/profile_small.jpg" />
+                            <img class="img-circle" src="{{asset('img/profile_small.jpg')}}">
                              </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">David Williams</strong>
@@ -260,7 +260,8 @@
                         <li>
                             <div class="dropdown-messages-box">
                                 <a href="profile.html" class="pull-left">
-                                    <img alt="image" class="img-circle" src="img/a7.jpg">
+                                    <img class="img-circle" src="{{asset('img/a7.jpg')}}">
+
                                 </a>
                                 <div class="media-body">
                                     <small class="pull-right">46h ago</small>
@@ -273,7 +274,7 @@
                         <li>
                             <div class="dropdown-messages-box">
                                 <a href="profile.html" class="pull-left">
-                                    <img alt="image" class="img-circle" src="img/a4.jpg">
+                                    <img class="img-circle" src="{{asset('img/a4.jpg')}}">
                                 </a>
                                 <div class="media-body ">
                                     <small class="pull-right text-navy">5h ago</small>
@@ -286,7 +287,7 @@
                         <li>
                             <div class="dropdown-messages-box">
                                 <a href="profile.html" class="pull-left">
-                                    <img alt="image" class="img-circle" src="img/profile.jpg">
+                                    <img class="img-circle" src="{{asset('img/profile.jpg')}}">
                                 </a>
                                 <div class="media-body ">
                                     <small class="pull-right">23h ago</small>
@@ -372,6 +373,17 @@
 
     </div>
     </div>
+
+    <!-- Mainly scripts -->
+    <script src="{{ asset('js/jquery-2.1.1.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
+    <script src="{{ asset('js/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="{{ asset('js/inspinia.js') }}"></script>
+    <script src="{{ asset('js/plugins/pace/pace.min.js') }}"></script>
+
 
 </body>
 </html>
