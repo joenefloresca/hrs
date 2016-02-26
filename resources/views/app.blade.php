@@ -11,8 +11,15 @@
 	<link href="{{ asset('css/plugins/toastr/toastr.min.css') }}" rel="stylesheet">
 	<link href="{{ asset('js/plugins/gritter/jquery.gritter.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/animate.css') }}" rel="stylesheet">
-	<link href="{{ asset('css/style.css') }}" rel="stylesheet">
-	<link href="{{ asset('css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/plugins/datapicker/datepicker3.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('css/plugins/dataTables/dataTables.bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/plugins/dataTables/dataTables.responsive.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/plugins/dataTables/dataTables.tableTools.min.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+
 
 </head>
 
@@ -26,7 +33,7 @@
                             <img class="img-circle" src="{{asset('img/profile_small.jpg')}}">
                              </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">David Williams</strong>
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{Auth::user()->name}}</strong>
                              </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <li><a href="profile.html">Profile</a></li>
@@ -68,15 +75,16 @@
                     </ul>
                 </li>
                 <li class="active">
-                    <a href="#"><i class="fa fa-clock-o"></i> <span class="nav-label">Time Change</span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-clock-o"></i> <span class="nav-label">Schedule Change</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li class="active"><a href="{{ url('timechange/create') }}">Submit Form</a></li>
+                        <li class="active"><a href="{{ url('changeschedule/create') }}">Submit Form</a></li>
                     </ul>
                 </li>
                 <li class="active">
                     <a href="#"><i class="fa fa-calendar-o"></i> <span class="nav-label">Leave Request</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="active"><a href="{{ url('leaverequest/create') }}">Submit Form</a></li>
+                        <li class="active"><a href="{{ url('leaverequest') }}">Submitted Forms</a></li>
                     </ul>
                 </li>
                 <li class="active">
@@ -238,6 +246,20 @@
     <script src="{{ asset('js/inspinia.js') }}"></script>
     <script src="{{ asset('js/plugins/pace/pace.min.js') }}"></script>
 
+    <!-- Data picker -->
+   <script src="{{ asset('js/plugins/datapicker/bootstrap-datepicker.js') }}"></script>
+
+    <!-- Data Tables -->
+    <script src="{{ asset('js/plugins/dataTables/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('js/plugins/dataTables/dataTables.bootstrap.js') }}"></script>
+    <script src="{{ asset('js/plugins/dataTables/dataTables.responsive.js') }}"></script>
+    <script src="{{ asset('js/plugins/dataTables/dataTables.tableTools.min.js') }}"></script>
+
+
+    
+    @yield('home')
+    @yield('leave-create')
+    @yield('leave-list')
 
 </body>
 </html>

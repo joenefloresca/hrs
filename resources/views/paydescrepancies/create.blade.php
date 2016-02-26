@@ -5,10 +5,7 @@
         <h2>Pay Descrepancies</h2>
         <ol class="breadcrumb">
             <li>
-                <a href="index-2.html">Home</a>
-            </li>
-            <li>
-                <a>Forms</a>
+                <a href="{{ url('home') }}">Home</a>
             </li>
             <li class="active">
                 <strong>Pay Descrepancies</strong>

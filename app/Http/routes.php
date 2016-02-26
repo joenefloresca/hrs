@@ -10,6 +10,8 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+use \Datatables;
+use App\Http\Models\Log;
 
 Route::get('/', function () {
     return view('home');
@@ -17,6 +19,11 @@ Route::get('/', function () {
 
 Route::get('home', function () {
     return view('home');
+});
+
+Route::get('logs', function () {
+	$logs = Log::select(['id','description','created_at'])->get();
+    return Datatables::of($logs)->make();
 });
 
 Route::controllers([
@@ -29,4 +36,8 @@ Route::resource('changeschedule', 'ChangeScheduleController');
 Route::resource('timechange', 'TimeChangeController');
 Route::resource('leaverequest', 'LeaveRequestController');
 Route::resource('paydescrepancies', 'PayDescrepanciesController');
+
+/* Ajax routes */
+Route::get('leave-list', 'LeaveRequestController@getLeaveList');
+Route::get('approve-leave/{id}', 'LeaveRequestController@approveLeave');
 

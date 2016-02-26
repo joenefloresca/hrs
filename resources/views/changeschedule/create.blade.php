@@ -2,16 +2,13 @@
 @section('content')
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2>Request of Payment Form</h2>
+        <h2>Change Schedule Form</h2>
         <ol class="breadcrumb">
             <li>
-                <a href="index-2.html">Home</a>
-            </li>
-            <li>
-                <a>Forms</a>
+                <a href="{{ url('home') }}">Home</a>
             </li>
             <li class="active">
-                <strong>Request of Payment Form</strong>
+                <strong>Change Schedule Form</strong>
             </li>
         </ol>
     </div>
@@ -24,7 +21,7 @@
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>Request of Payment Form</small></h5>
+                            <h5>Change Schedule Form</small></h5>
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
