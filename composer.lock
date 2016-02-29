@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a70d9c192bf78a459ac177db85ddecde",
+    "hash": "9514638d61733f8d0f7fcb42b7188ba9",
     "content-hash": "4696583b724573a17de5974dc5963cfb",
     "packages": [
         {
@@ -2665,16 +2665,16 @@
         },
         {
             "name": "yajra/laravel-datatables-oracle",
-            "version": "v6.6.1",
+            "version": "v6.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yajra/laravel-datatables.git",
-                "reference": "df8b82590490ed08d301835c2326e3a46948278c"
+                "reference": "789c389869ce0254a8eefdd169899fa6d7564f11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/df8b82590490ed08d301835c2326e3a46948278c",
-                "reference": "df8b82590490ed08d301835c2326e3a46948278c",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/789c389869ce0254a8eefdd169899fa6d7564f11",
+                "reference": "789c389869ce0254a8eefdd169899fa6d7564f11",
                 "shasum": ""
             },
             "require": {
@@ -2718,7 +2718,7 @@
                 "laravel4",
                 "laravel5"
             ],
-            "time": "2016-02-20 07:12:28"
+            "time": "2016-02-26 06:00:00"
         }
     ],
     "packages-dev": [
@@ -3647,16 +3647,16 @@
         },
         {
             "name": "sebastian/environment",
-            "version": "1.3.3",
+            "version": "1.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/environment.git",
-                "reference": "6e7133793a8e5a5714a551a8324337374be209df"
+                "reference": "22aa49baa48886f40b060e061a7967436f44a249"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/6e7133793a8e5a5714a551a8324337374be209df",
-                "reference": "6e7133793a8e5a5714a551a8324337374be209df",
+                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/22aa49baa48886f40b060e061a7967436f44a249",
+                "reference": "22aa49baa48886f40b060e061a7967436f44a249",
                 "shasum": ""
             },
             "require": {
@@ -3693,7 +3693,7 @@
                 "environment",
                 "hhvm"
             ],
-            "time": "2015-12-02 08:37:27"
+            "time": "2016-02-26 11:40:57"
         },
         {
             "name": "sebastian/exporter",

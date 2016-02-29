@@ -36,6 +36,9 @@ Route::resource('changeschedule', 'ChangeScheduleController');
 Route::resource('timechange', 'TimeChangeController');
 Route::resource('leaverequest', 'LeaveRequestController');
 Route::resource('paydescrepancies', 'PayDescrepanciesController');
+Route::resource('payrollqueries', 'PayrollQueriesController');
+Route::resource('cashadvance', 'CashAdvanceController');
+
 
 /* Ajax routes */
 Route::get('leave-list', 'LeaveRequestController@getLeaveList');
