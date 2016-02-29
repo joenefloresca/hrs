@@ -15,10 +15,12 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('email')->unique();
+            //$table->string('email')->unique();
             $table->string('password', 60);
             $table->integer('access_level');
-            $table->integer('id_number');
+            $table->integer('id_number')->unique();
+            $table->string('ameyo_login')->unique();
+            $table->string('department');
             $table->rememberToken();
             $table->timestamps();
         });
