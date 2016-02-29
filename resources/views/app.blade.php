@@ -276,6 +276,7 @@
     @yield('home')
     @yield('leave-create')
     @yield('leave-list')
+    @yield('cashadvance-create')
 
 </body>
 </html>

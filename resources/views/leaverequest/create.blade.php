@@ -124,7 +124,6 @@ div#datepicker {
             </div>
         </div>
 @endsection
-
 @section('leave-create')
 <script>
 $(document).ready(function(){

@@ -128,7 +128,7 @@
                                     <br>
                                     <br>
                                     <br>
-                                    <div class="col-sm-10 col-md-offset-2"><input type="text" name="repayment_date" class="form-control"></div>
+                                    <div class="col-sm-10 col-md-offset-2"><input type="text" name="repayment_date" id="repayment_date" class="form-control"></div>
                                 </div>
 
 
@@ -146,6 +146,18 @@
                 </div>
             </div>
         </div>
+@endsection
+@section('cashadvance-create')
+<script>
+$(document).ready(function(){
+    $('#repayment_date').datepicker({
+        keyboardNavigation: false,
+        forceParse: false,
+        autoclose: true,
+        format: "yyyy-mm-dd"
+    });
+}); 
+</script>           
 @endsection
 
 

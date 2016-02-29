@@ -58,7 +58,7 @@ class CashAdvanceController extends Controller
             'reason'           => 'required',
             'terms'            => 'required',
             'amount'           => 'required',
-            'repayment_date'   => 'repayment_date',
+            'repayment_date'   => 'required',
         );
 
         $validator = Validator::make(Input::all(), $rules);
@@ -78,6 +78,7 @@ class CashAdvanceController extends Controller
             $cashadvance->terms              = Input::get('terms');
             $cashadvance->amount             = Input::get('amount');
             $cashadvance->repayment_date     = Input::get('repayment_date');
+            $cashadvance->submitted_by_id    = Auth::user()->id;
             $cashadvance->save();
 
             $log = new Log();
