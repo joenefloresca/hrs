@@ -13,7 +13,11 @@
 	<link href="{{ asset('css/animate.css') }}" rel="stylesheet">
     <link href="{{ asset('css/plugins/datapicker/datepicker3.css') }}" rel="stylesheet">
 
-    <link href="{{ asset('css/plugins/dataTables/dataTables.bootstrap.css') }}" rel="stylesheet">
+    <!-- <link href="{{ asset('css/plugins/dataTables/dataTables.bootstrap.css') }}" rel="stylesheet"> -->
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/cerulean/bootstrap.min.css" rel="stylesheet">
+
+
     <link href="{{ asset('css/plugins/dataTables/dataTables.responsive.css') }}" rel="stylesheet">
     <link href="{{ asset('css/plugins/dataTables/dataTables.tableTools.min.css') }}" rel="stylesheet">
 
@@ -91,6 +95,18 @@
                     <a href="#"><i class="fa fa-calendar"></i> <span class="nav-label">Time IN/OUT Change</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="active"><a href="{{ url('timechange/create') }}">Submit Form</a></li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="#"><i class="fa fa-cc-mastercard"></i> <span class="nav-label">Payroll Queries</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li class="active"><a href="{{ url('payrollqueries/create') }}">Submit Form</a></li>
+                    </ul>
+                </li>
+                 <li class="active">
+                    <a href="#"><i class="fa fa-credit-card"></i> <span class="nav-label">Cash Advance</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li class="active"><a href="{{ url('cashadvance/create') }}">Submit Form</a></li>
                     </ul>
                 </li>
                 
