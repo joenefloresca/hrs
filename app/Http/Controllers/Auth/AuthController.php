@@ -8,6 +8,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Auth;
+use Illuminate\Http\Request;
+use Session;
+use Redirect;
 
 class AuthController extends Controller
 {
@@ -23,6 +26,9 @@ class AuthController extends Controller
     */
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+    private $username = 'id_number';
+    private $redirectAfterLogout  = '/auth/login';
+    private $redirectTo = '/auth/login';
 
     /**
      * Create a new authentication controller instance.
@@ -44,9 +50,11 @@ class AuthController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            //'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
-            'id_number' => 'required',
+            'id_number' => 'required|unique:users',
+            'ameyo_login' => 'required|unique:users',
+            'department' => 'required',
         ]);
     }
 
@@ -60,9 +68,11 @@ class AuthController extends Controller
     {
         return User::create([
             'name' => $data['name'],
-            'email' => $data['email'],
-            'id_number' => $data['id_number'],
-            'password' => bcrypt($data['password']),
+           // 'email' => $data['email'],
+            'id_number'    => $data['id_number'],
+            'ameyo_login'  => $data['ameyo_login'],
+            'department'   => $data['department'],
+            'password'     => bcrypt($data['password']),
         ]);
     }
 
@@ -76,5 +86,53 @@ class AuthController extends Controller
         Auth::logout();
 
         return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/auth/login');
+    }
+
+    /**
+     * Handle a login request to the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function postLogin(Request $request)
+    {
+        $this->validate($request, [
+            'id_number' => 'required', 'password' => 'required',
+        ]);
+
+        $credentials = $this->getCredentials($request);
+
+        if (Auth::attempt($credentials, $request->has('remember'))) {
+                 return redirect()->intended('home');
+        }
+
+        return redirect($this->loginPath())
+            ->withInput($request->only('id_number', 'remember'))
+            ->withErrors([
+                'id_number' => $this->getFailedLoginMessage(),
+            ]);
+    }
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function postRegister(Request $request)
+    {
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        $this->create($request->all());
+
+        Session::flash('alert-success', 'Registration submitted Successfully!');
+
+        return Redirect::to('auth/register');
     }
 }

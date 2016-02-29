@@ -18,14 +18,22 @@
 				</ul>
 			</div>
 		@endif
+        <div class="flash-message">
+            @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+              @if(Session::has('alert-' . $msg))
+              <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }}</p>
+              @endif
+            @endforeach
+        </div>
         <form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="form-group">
-                <input type="email" class="form-control" name="email" placeholder="Username Email" required="">
+                <input type="text" class="form-control" name="id_number" placeholder="ID Number" required="">
             </div>
             <div class="form-group">
                 <input type="password" class="form-control" name="password" placeholder="Password" required="">
             </div>
+
             <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
 
             <!-- <a href="{{ url('/password/email') }}"><small>Forgot password?</small></a> -->

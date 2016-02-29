@@ -19,6 +19,13 @@
 					</ul>
 				</div>
 			@endif
+            <div class="flash-message">
+                @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                  @if(Session::has('alert-' . $msg))
+                  <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }}</p>
+                  @endif
+                @endforeach
+            </div>
             <form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/register') }}">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -26,9 +33,9 @@
                     <input type="text" class="form-control" placeholder="Name" name="name" required="">
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <input type="email" class="form-control" placeholder="Email" name="email" required="">
-                </div>
+                </div> -->
 
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="ID Number" name="id_number" required="">
@@ -42,10 +49,26 @@
                     <input type="password" class="form-control" placeholder="Confirm Password" name="password_confirmation">
                 </div>
 
+                <div class="form-group">
+                    <input type="text" class="form-control" name="ameyo_login" placeholder="Ameyo Login ID" required="">
+                </div>
+
+                <div class="form-group">
+                    <select class="form-control" name="department">
+                        <option value="">Choose One</option>
+                        <option value="IT">IT</option>
+                        <option value="Operations">Operations</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Facilities">Facilities</option>
+                        <option value="Client Services">Client Services</option>
+                        <option value="Agent">Agent</option>
+                    </select>
+                </div>
+
                 <button type="submit" class="btn btn-primary block full-width m-b">Register</button>
 
                 <p class="text-muted text-center"><small>Already have an account?</small></p>
-                <a class="btn btn-sm btn-white btn-block" href="login.html">Login</a>
+                <a class="btn btn-sm btn-white btn-block" href="{{ url('/auth/login') }}">Login</a>
             </form>
             <p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small> </p>
         </div>
