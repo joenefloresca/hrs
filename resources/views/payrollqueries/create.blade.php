@@ -36,15 +36,34 @@
 
 
                         <div class="ibox-content">
-                            <form method="get" class="form-horizontal">
+                             <form class="form-horizontal" role="form" method="POST" action="{{ url('payrollqueries') }}">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                @if (count($errors) > 0)
+                                <div class="alert alert-danger">
+                                        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+
+                                <div class="flash-message">
+                                    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                                      @if(Session::has('alert-' . $msg))
+                                      <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }}</p>
+                                      @endif
+                                    @endforeach
+                                </div>
 
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Name</label>
-                                    <div class="col-sm-10"><input type="text" name=-"" class="form-control"></div>
+                                    <div class="col-sm-10"><input type="text" name="name" class="form-control"></div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Date</label>
-                                    <div class="col-sm-10"><input type="text" name=-"" class="form-control"></div>
+                                    <div class="col-sm-10"><input type="text" name="date" class="form-control"></div>
                                 </div>
 
                                 <div class="form-group"><label class="col-sm-2 control-label">Department/Program</label>
@@ -61,23 +80,23 @@
 
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Payroll Period</label>
-                                    <div class="col-sm-10"><input type="text" name=-"" class="form-control"></div>
+                                    <div class="col-sm-10"><input type="text" name="payroll" class="form-control"></div>
                                 </div>
 
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Inquiry/Concern Details</label>
-                                    <div class="col-sm-10"><textarea class="form-control" name=-""  id="textArea"></textarea></div>
+                                    <div class="col-sm-10"><textarea class="form-control" name="inquiry"  id="textArea"></textarea></div>
                                 </div>
 
                                  <div class="hr-line-dashed"></div>
 
                                 <div class="form-group has-success">
                                     <label class="col-sm-2 control-label">Recieved by:</label>
-                                    <div class="col-sm-10"><input type="text" name=-"" class="form-control"></div>
+                                    <div class="col-sm-10"><input type="text" name="recieved_by" class="form-control"></div>
                                 </div>
                                  <div class="form-group">
                                     <label class="col-sm-2 control-label">Date:</label>
-                                    <div class="col-sm-10"><input type="text" name=-"" class="form-control"></div>
+                                    <div class="col-sm-10"><input type="text" name="date_recieved_by" class="form-control"></div>
                                 </div>
 
                          
@@ -86,27 +105,27 @@
 
                                 <div class="form-group ">
                                     <label class="col-sm-2 control-label">Action Taken</label>
-                                    <div class="col-sm-10"><textarea class="form-control" name=-""  id="textArea"></textarea></div>
+                                    <div class="col-sm-10"><textarea class="form-control" name="action_taken"  id="textArea"></textarea></div>
                                 </div>
 
                                 <div class="form-group has-success">
                                     <label class="col-sm-2 control-label">Feedback Given by:</label>
-                                    <div class="col-sm-10"><input type="text" name=-"" class="form-control"></div>
+                                    <div class="col-sm-10"><input type="text" name="feedback_given" class="form-control"></div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Date:</label>
-                                    <div class="col-sm-10"><input type="text" name=-"" class="form-control"></div>
+                                    <div class="col-sm-10"><input type="text" name="date_feedback_given" class="form-control"></div>
                                 </div>
 
                                  <div class="hr-line-dashed"></div>
 
                                 <div class="form-group has-success">
                                     <label class="col-sm-2 control-label">Acknowledge by:</label>
-                                    <div class="col-sm-10"><input type="text" name=-"" class="form-control"></div>
+                                    <div class="col-sm-10"><input type="text" name="acknowledge" class="form-control"></div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Date:</label>
-                                    <div class="col-sm-10"><input type="text" name=-"" class="form-control"></div>
+                                    <div class="col-sm-10"><input type="text" name="date_acknowledge" class="form-control"></div>
                                 </div>
 
 
@@ -115,8 +134,7 @@
 
                                 <div class="form-group">
                                     <div class="col-sm-4 col-sm-offset-2">
-                                        <button class="btn btn-white" type="submit">Cancel</button>
-                                        <button class="btn btn-primary" type="submit">Save changes</button>
+                                        <button class="btn btn-primary" type="submit">Submit</button>
                                     </div>
                                 </div>
 

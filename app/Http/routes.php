@@ -40,6 +40,7 @@ Route::resource('payrollqueries', 'PayrollQueriesController');
 Route::resource('cashadvance', 'CashAdvanceController');
 
 
+
 /* Ajax routes */
 Route::get('leave-list', 'LeaveRequestController@getLeaveList');
 Route::get('approve-leave/{id}', 'LeaveRequestController@approveLeave');
