@@ -38,6 +38,7 @@ Route::resource('leaverequest', 'LeaveRequestController');
 Route::resource('paydescrepancies', 'PayDescrepanciesController');
 Route::resource('payrollqueries', 'PayrollQueriesController');
 Route::resource('cashadvance', 'CashAdvanceController');
+Route::resource('overtimeform', 'OvertimeFormController');
 
 
 
