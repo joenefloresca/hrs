@@ -13,9 +13,9 @@
 	<link href="{{ asset('css/animate.css') }}" rel="stylesheet">
     <link href="{{ asset('css/plugins/datapicker/datepicker3.css') }}" rel="stylesheet">
 
-    <!-- <link href="{{ asset('css/plugins/dataTables/dataTables.bootstrap.css') }}" rel="stylesheet"> -->
+    <link href="{{ asset('css/plugins/dataTables/dataTables.bootstrap.css') }}" rel="stylesheet">
 
-    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/cerulean/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/cerulean/bootstrap.min.css" rel="stylesheet"> -->
 
 
     <link href="{{ asset('css/plugins/dataTables/dataTables.responsive.css') }}" rel="stylesheet">
@@ -286,6 +286,7 @@
     @yield('leave-create')
     @yield('leave-list')
     @yield('cashadvance-create')
+    @yield('payrollqueries-create')
 
 </body>
 </html>
