@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Date</label>
-                                    <div class="col-sm-10"><input type="text" name="date" class="form-control"></div>
+                                    <div class="col-sm-10"><input type="text" name="date" id="date" class="form-control"></div>
                                 </div>
 
                                 <div class="form-group"><label class="col-sm-2 control-label">Department/Program</label>
@@ -96,7 +96,7 @@
                                 </div>
                                  <div class="form-group">
                                     <label class="col-sm-2 control-label">Date:</label>
-                                    <div class="col-sm-10"><input type="text" name="date_recieved_by" class="form-control"></div>
+                                    <div class="col-sm-10"><input type="text" name="date_recieved_by" id="date_recieved_by" class="form-control"></div>
                                 </div>
 
                          
@@ -114,7 +114,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Date:</label>
-                                    <div class="col-sm-10"><input type="text" name="date_feedback_given" class="form-control"></div>
+                                    <div class="col-sm-10"><input type="text" name="date_feedback_given" id="date_feedback_given" class="form-control"></div>
                                 </div>
 
                                  <div class="hr-line-dashed"></div>
@@ -125,7 +125,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Date:</label>
-                                    <div class="col-sm-10"><input type="text" name="date_acknowledge" class="form-control"></div>
+                                    <div class="col-sm-10"><input type="text" name="date_acknowledge" id="date_acknowledge" class="form-control"></div>
                                 </div>
 
 
@@ -147,10 +147,10 @@
 @endsection
 
 
-@section('payroll-create')
+@section('payrollqueries-create')
 <script>
 $(document).ready(function(){
-    $('#data_5 .input-daterange').datepicker({
+    $('#date_recieved_by, #date_acknowledge, #date_feedback_given, #date').datepicker({
         keyboardNavigation: false,
         forceParse: false,
         autoclose: true,
