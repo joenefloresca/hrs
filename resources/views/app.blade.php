@@ -51,6 +51,7 @@
                         IN+
                     </div>
                 </li>
+
                 <li>
                     <a href="index-2.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
@@ -103,10 +104,18 @@
                         <li class="active"><a href="{{ url('payrollqueries/create') }}">Submit Form</a></li>
                     </ul>
                 </li>
+
                  <li class="active">
                     <a href="#"><i class="fa fa-credit-card"></i> <span class="nav-label">Cash Advance</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="active"><a href="{{ url('cashadvance/create') }}">Submit Form</a></li>
+                    </ul>
+                </li>
+
+                <li class="active">
+                    <a href="#"><i class="fa fa-clock-o"></i> <span class="nav-label">Overtime Application</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li class="active"><a href="{{ url('overtimeform/create') }}">Submit Form</a></li>
                     </ul>
                 </li>
                 
