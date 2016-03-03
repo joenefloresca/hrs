@@ -33,24 +33,26 @@
                                 </a>
                             </div>
                         </div>
-                        <table id="LeaveList" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Employee Name</th>
-                                    <th>Employee ID</th>
-                                    <th>From</th>
-                                    <th>To</th>
-                                    <th>Leave Type</th>
-                                    <!-- <th>Department</th> -->
-                                    <th>Status</th>
-                                    <th>Date Created</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
+                        <div class="ibox-content">
+                            <table id="LeaveList" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Employee Name</th>
+                                        <th>Employee ID</th>
+                                        <th>From</th>
+                                        <th>To</th>
+                                        <th>Leave Type</th>
+                                        <!-- <th>Department</th> -->
+                                        <th>Status</th>
+                                        <th>Date Created</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -67,10 +69,12 @@
                  "createdRow": function ( row, data, index ) {
                     if ( data.status == 0 ) {
                         $('td', row).eq(6).addClass('text-danger');
+                        $('td', row).eq(6).addClass('text-danger').text('Pending');
                     }
                     else
                     {
                         $('td', row).eq(6).addClass('text-success');
+                        $('td', row).eq(6).addClass('text-success').text('Approved');
                     }
                 },
                 columns: [

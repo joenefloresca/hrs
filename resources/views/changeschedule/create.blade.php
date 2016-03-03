@@ -34,16 +34,67 @@
                             </div>
                         </div>
                         <div class="ibox-content">
-                            <form method="get" class="form-horizontal">
-                                <div class="form-group"><label class="col-sm-2 control-label">Normal</label>
-
-                                    <div class="col-sm-10"><input type="text" class="form-control"></div>
+                            @if (count($errors) > 0)
+                            <div class="alert alert-danger">
+                                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
                                 </div>
+                            @endif
+
+                            <div class="flash-message">
+                                @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                                  @if(Session::has('alert-' . $msg))
+                                  <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }}</p>
+                                  @endif
+                                @endforeach
+                            </div>
+                            <form class="form-horizontal" role="form" method="POST" action="{{ url('changeschedule') }}">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                                <div class="form-group"><label class="col-sm-2 control-label">Employee Name</label>
+                                    <div class="col-sm-10"><input type="text" name="employee_name" id="employee_name" class="form-control"></div>
+                                </div>
+
+                                <div class="form-group"><label class="col-sm-2 control-label">Department</label>
+                                    <div class="col-sm-10"><input type="text" name="department" id="department" class="form-control"></div>
+                                </div>
+
+                                <div class="form-group"><label class="col-sm-2 control-label">Change Type</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" name="change_type" id="change_type">
+                                            <option value="">Choose One</option>
+                                            <option value="Change in work schedule">Change in work schedule</option>
+                                            <option value="Change of Day off">Change of Day off</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group"><label class="col-sm-2 control-label">Change Details</label>
+                                    <div class="col-sm-10">
+                                        <table id="ChangeDetailList" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>Date Affected</th>
+                                                    <th>Current Schedule</th>
+                                                    <th>New Schedule</th>
+                                                    <th>Reason</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                        
                         
                                 <div class="hr-line-dashed"></div>
                                 <div class="form-group">
                                     <div class="col-sm-4 col-sm-offset-2">
-                                        <button class="btn btn-white" type="submit">Cancel</button>
+                                        <button class="btn btn-warning" type="button" id="addDetails">Add Change Details</button>
                                         <button class="btn btn-primary" type="submit">Save changes</button>
                                     </div>
                                 </div>
@@ -53,4 +104,22 @@
                 </div>
             </div>
         </div>
+@endsection
+@section('changeschedule-create')
+<script>
+$(document).on("click", "#addDetails", function() {
+  $('#ChangeDetailList tr:last').after('<tr><td><input type="text" name="date_affected[]" class="form-control" id="date-affected" /></td><td><input type="text" name="current_schedule[]" class="form-control" /></td><td><input type="text" name="new_schedule[]" class="form-control" /></td><td><input type="text" name="reason[]" class="form-control" /></td></tr>');
+});
+
+// $(document).on("load", "#date-affected", function() {
+//   $('#date-affected').datepicker({
+//         keyboardNavigation: false,
+//         forceParse: false,
+//         autoclose: true,
+//         format: "yyyy-mm-dd"
+//     });
+// });
+
+
+</script>
 @endsection
