@@ -118,6 +118,7 @@
                         <li class="active"><a href="{{ url('overtimeform/create') }}">Submit Form</a></li>
                     </ul>
                 </li>
+
                 
             </ul>
 
@@ -287,6 +288,7 @@
     @yield('leave-list')
     @yield('cashadvance-create')
     @yield('payrollqueries-create')
+    @yield('changeschedule-create')
 
 </body>
 </html>

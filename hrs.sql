@@ -50,6 +50,66 @@ LOCK TABLES `cashadvances` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `changeschedules_header`
+--
+
+DROP TABLE IF EXISTS `changeschedules_header`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `changeschedules_header` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `employee_name` varchar(300) DEFAULT NULL,
+  `department` varchar(300) DEFAULT NULL,
+  `change_type` varchar(300) DEFAULT NULL,
+  `submitted_by_id` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT '0',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `changeschedules_header`
+--
+
+LOCK TABLES `changeschedules_header` WRITE;
+/*!40000 ALTER TABLE `changeschedules_header` DISABLE KEYS */;
+INSERT INTO `changeschedules_header` VALUES (1,'Joene Floresca','IT','Change in work schedule',1,NULL,'2016-03-02 15:24:16','2016-03-02 15:24:16');
+/*!40000 ALTER TABLE `changeschedules_header` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `changeschedules_items`
+--
+
+DROP TABLE IF EXISTS `changeschedules_items`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `changeschedules_items` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `changeschedules_header_id` int(11) DEFAULT NULL,
+  `date_affected` date DEFAULT NULL,
+  `current_schedule` varchar(300) DEFAULT NULL,
+  `new_schedule` varchar(300) DEFAULT NULL,
+  `reason` varchar(300) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `changeschedules_items`
+--
+
+LOCK TABLES `changeschedules_items` WRITE;
+/*!40000 ALTER TABLE `changeschedules_items` DISABLE KEYS */;
+INSERT INTO `changeschedules_items` VALUES (1,1,'2016-01-01','0000-00-00','0000-00-00','0000-00-00','2016-03-02 15:24:16','2016-03-02 15:24:16'),(2,1,'2016-01-02','0000-00-00','0000-00-00','0000-00-00','2016-03-02 15:24:16','2016-03-02 15:24:16'),(3,1,'2016-01-03','0000-00-00','0000-00-00','0000-00-00','2016-03-02 15:24:16','2016-03-02 15:24:16');
+/*!40000 ALTER TABLE `changeschedules_items` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `leaverequests`
 --
 
@@ -179,6 +239,7 @@ CREATE TABLE `payrollqueries` (
   `acknowledge` varchar(1000) DEFAULT NULL,
   `date_acknowledge` date DEFAULT NULL,
   `submitted_by_id` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -191,7 +252,7 @@ CREATE TABLE `payrollqueries` (
 
 LOCK TABLES `payrollqueries` WRITE;
 /*!40000 ALTER TABLE `payrollqueries` DISABLE KEYS */;
-INSERT INTO `payrollqueries` VALUES (5,'Joene Floresca','2016-02-16','MIS','Feb 15','aaaaaaaaaa','aaaaaaaaaa','0000-00-00','aaaaaaaaaa','aaaaaaaaaa','2016-02-18','aaaaaaaaaa','2016-02-17',1,'2016-02-29 15:12:56','2016-02-29 15:12:56');
+INSERT INTO `payrollqueries` VALUES (5,'Joene Floresca','2016-02-16','MIS','Feb 15','aaaaaaaaaa','aaaaaaaaaa','0000-00-00','aaaaaaaaaa','aaaaaaaaaa','2016-02-18','aaaaaaaaaa','2016-02-17',1,NULL,'2016-02-29 15:12:56','2016-02-29 15:12:56');
 /*!40000 ALTER TABLE `payrollqueries` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -238,4 +299,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-01 20:36:11
+-- Dump completed on 2016-03-03 16:05:13
