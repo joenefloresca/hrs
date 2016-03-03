@@ -63,9 +63,7 @@
                     </ul>
                 </li>
                
-            
-                
-                
+        
                 <li class="active">
                     <a href="#"><i class="fa fa-money"></i> <span class="nav-label">Request of Payment</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
@@ -287,6 +285,9 @@
     @yield('leave-list')
     @yield('cashadvance-create')
     @yield('payrollqueries-create')
+    @yield('PayrollQueries')
+
+    
 
 </body>
 </html>
