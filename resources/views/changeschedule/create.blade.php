@@ -83,6 +83,12 @@
                                                     <th>New Schedule</th>
                                                     <th>Reason</th>
                                                 </tr>
+                                                <tr>
+                                                    <td><input type="text" name="date_affected[]" class="form-control" id="date-affected" /></td>
+                                                    <td><input type="text" name="current_schedule[]" class="form-control"  /></td>
+                                                    <td><input type="text" name="new_schedule[]" class="form-control"  /></td>
+                                                    <td><input type="text" name="reason[]" class="form-control"  /></td>
+                                                </tr>
                                             </thead>
                                             <tbody>
                                             </tbody>
