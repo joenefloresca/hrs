@@ -60,7 +60,15 @@
                                 </div>
 
                                 <div class="form-group"><label class="col-sm-2 control-label">Department</label>
-                                    <div class="col-sm-10"><input type="text" name="department" id="department" class="form-control"></div>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" name="department">
+                                            <option value="">Choose One</option>
+                                            <option value="MIS">MIS</option>
+                                            <option value="IT">IT</option>
+                                            <option value="Finance">Finance</option>
+                                            <option value="Operations">Operations</option>
+                                        </select>
+                                    </div>
                                 </div>
 
                                 <div class="form-group"><label class="col-sm-2 control-label">Change Type</label>
@@ -82,6 +90,12 @@
                                                     <th>Current Schedule</th>
                                                     <th>New Schedule</th>
                                                     <th>Reason</th>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="text" name="date_affected[]" class="form-control" id="date-affected" placeholder="yyyy-mm-dd" /></td>
+                                                    <td><input type="text" name="current_schedule[]" class="form-control"  /></td>
+                                                    <td><input type="text" name="new_schedule[]" class="form-control"  /></td>
+                                                    <td><input type="text" name="reason[]" class="form-control"  /></td>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -108,18 +122,23 @@
 @section('changeschedule-create')
 <script>
 $(document).on("click", "#addDetails", function() {
-  $('#ChangeDetailList tr:last').after('<tr><td><input type="text" name="date_affected[]" class="form-control" id="date-affected" /></td><td><input type="text" name="current_schedule[]" class="form-control" /></td><td><input type="text" name="new_schedule[]" class="form-control" /></td><td><input type="text" name="reason[]" class="form-control" /></td></tr>');
+  $('#ChangeDetailList tr:last').after('<tr><td><input type="text" name="date_affected[]" class="form-control" id="date-affected" placeholder="yyyy-mm-dd" /></td><td><input type="text" name="current_schedule[]" class="form-control" /></td><td><input type="text" name="new_schedule[]" class="form-control" /></td><td><input type="text" name="reason[]" class="form-control" /></td></tr>');
 });
 
-// $(document).on("load", "#date-affected", function() {
-//   $('#date-affected').datepicker({
-//         keyboardNavigation: false,
-//         forceParse: false,
-//         autoclose: true,
-//         format: "yyyy-mm-dd"
-//     });
-// });
+$(document).on("load", "#date-affected", function() {
+  $('#date-affected').datepicker({
+        keyboardNavigation: false,
+        forceParse: false,
+        autoclose: true,
+        format: "yyyy-mm-dd"
+    });
+});
 
 
+
+$("#date-affected").delegate( "#date-affected", "load",
+    function(e) {
+        alert("photo loaded");
+});
 </script>
 @endsection

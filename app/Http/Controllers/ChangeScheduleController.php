@@ -8,12 +8,13 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Models\ChangeScheduleH;
 use App\Http\Models\ChangeScheduleI;
+use App\Http\Models\Log;
 use Auth;
 use Validator;
 use Redirect;
 use Input;
 use Session;
-
+use Datatables;
 
 class ChangeScheduleController extends Controller
 {
@@ -28,7 +29,7 @@ class ChangeScheduleController extends Controller
      */
     public function index()
     {
-        //
+        return view('changeschedule.index');
     }
 
     /**
@@ -85,6 +86,10 @@ class ChangeScheduleController extends Controller
                 $sched_i->save();
             }
 
+            $log = new Log();
+            $log->description   = Auth::user()->name." submitted new Change Schedule";
+            $log->save();
+
             Session::flash('alert-success', 'Change Schedule request submitted.');
             return Redirect::to('changeschedule/create');
 
@@ -99,7 +104,9 @@ class ChangeScheduleController extends Controller
      */
     public function show($id)
     {
-        //
+        $header = ChangeScheduleH::find($id);
+        $items = ChangeScheduleI::where('changeschedules_header_id', '=', $id)->get();
+        return view('changeschedule.show')->with(array('header' => $header, 'items' => $items));
     }
 
     /**
@@ -110,7 +117,8 @@ class ChangeScheduleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $header = ChangeScheduleH::find($id);
+        return view('changeschedule.edit')->with(array('header'=>$header));
     }
 
     /**
@@ -122,7 +130,29 @@ class ChangeScheduleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = array(
+            'employee_name' => 'required',
+            'department'    => 'required',
+            'change_type'   => 'required',
+        );
+
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->fails())
+        {
+            return Redirect::to('changeschedule/'.$id.'/edit')->withInput()->withErrors($validator);
+        }
+        else
+        {
+            $header                 = ChangeScheduleH::find($id);
+            $header->employee_name  = Input::get('employee_name');
+            $header->department     = Input::get('department');
+            $header->change_type    = Input::get('change_type');
+            $header->status         = Input::get('status');
+            $header->save();
+
+            Session::flash('alert-success', 'Change schedule request updated.');
+            return Redirect::to('changeschedule/'.$id.'/edit');
+        }
     }
 
     /**
@@ -134,5 +164,16 @@ class ChangeScheduleController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getScheduleList()
+    {
+        $sched = ChangeScheduleH::select(['id','employee_name','department','change_type','status', 'created_at'])->get();
+        return Datatables::of($sched)
+        ->addColumn('action', function ($sched) {
+                return '<a href="changeschedule/'.$sched->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+                <a href="changeschedule/'.$sched->id.'" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i> View</a>';
+            })
+        ->make(true);
     }
 }

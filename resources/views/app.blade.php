@@ -81,6 +81,7 @@
                     <a href="#"><i class="fa fa-clock-o"></i> <span class="nav-label">Schedule Change</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="active"><a href="{{ url('changeschedule/create') }}">Submit Form</a></li>
+                        <li class="active"><a href="{{ url('changeschedule') }}">Submitted Forms</a></li>
                     </ul>
                 </li>
 
@@ -282,6 +283,9 @@
     <script src="{{ asset('js/plugins/dataTables/dataTables.bootstrap.js') }}"></script>
     <script src="{{ asset('js/plugins/dataTables/dataTables.responsive.js') }}"></script>
     <script src="{{ asset('js/plugins/dataTables/dataTables.tableTools.min.js') }}"></script>
+    <script>
+        $("body").addClass("skin-3");
+    </script>
 
     @yield('home')
     @yield('leave-create')
@@ -291,7 +295,11 @@
     @yield('changeschedule-create')
     @yield('payrollqueries-create')
     @yield('payroll-queries')
+<<<<<<< HEAD
     @yield('cash-advance')
+=======
+    @yield('changeschedule-list')
+>>>>>>> b5f6a9093f7cdb28ed3ed8d0bcaefd0bc944bec6
 
 </body>
 </html>
