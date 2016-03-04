@@ -73,6 +73,7 @@ $(document).ready(function(){
                 $('td', row).eq(6).addClass('text-success').text('Approved');
             }
         },
+        
         columns: [
             {data: 'id', name: 'id'},
             {data: 'name', name: 'name'},
