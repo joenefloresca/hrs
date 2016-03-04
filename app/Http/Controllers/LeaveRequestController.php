@@ -21,6 +21,7 @@ class LeaveRequestController extends Controller
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -172,8 +173,5 @@ class LeaveRequestController extends Controller
             })->make(true);
     }
 
-    public function approveLeave()
-    {
-        return "Hello";
-    }
+    
 }

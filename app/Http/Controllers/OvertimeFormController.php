@@ -68,6 +68,7 @@ class OvertimeFormController extends Controller
         }
         else
         {
+            
             $cashadvance = new CashAdvance();
             $cashadvance->employees_name     = Input::get('employees_name');
             $cashadvance->home_address       = Input::get('home_address');

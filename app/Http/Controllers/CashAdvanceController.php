@@ -28,7 +28,7 @@ class CashAdvanceController extends Controller
      */
     public function index()
     {
-        //
+        return view('cashadvance.index');
     }
 
     /**
@@ -85,7 +85,7 @@ class CashAdvanceController extends Controller
             $log->description   = Auth::user()->name." submitted new Cash Advance";
             $log->save();
 
-            Session::flash('alert-success', 'Leave request submitted.');
+            Session::flash('alert-success', 'Cash Advance request submitted.');
             return Redirect::to('cashadvance/create');
 
         }
@@ -110,7 +110,8 @@ class CashAdvanceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cashadvance = CashAdvance::find($id);
+        return view('cashadvance.edit')->with('cashadvance', $cashadvance);
     }
 
     /**
@@ -122,7 +123,52 @@ class CashAdvanceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = array(
+            'employees_name'   => 'required',
+            'home_address'     => 'required',
+            'email'            => 'required',
+            'contact_details'  => 'required',
+            'requested_amount' => 'required',
+            'reason'           => 'required',
+            'terms'            => 'required',
+            'amount'           => 'required',
+            'repayment_date'   => 'required',
+        );
+
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->fails())
+        {
+            return Redirect::to('cashadvance/'.$id.'/edit')->withInput()->withErrors($validator);
+        }
+        else
+        {
+       
+            $cashadvance = CashAdvance::find($id);
+            $cashadvance->employees_name     = Input::get('employees_name');
+            $cashadvance->home_address       = Input::get('home_address');
+            $cashadvance->email              = Input::get('email');
+            $cashadvance->contact_details    = Input::get('contact_details');
+            $cashadvance->requested_amount   = Input::get('requested_amount');
+            $cashadvance->reason             = Input::get('reason');
+            $cashadvance->terms              = Input::get('terms');
+            $cashadvance->amount             = Input::get('amount');
+            $cashadvance->repayment_date     = Input::get('repayment_date');
+            $cashadvance->submitted_by_id    = Auth::user()->id;
+            $cashadvance->save();
+
+            Session::flash('alert-success', 'Cash Advance request updated.');
+            return Redirect::to('cashadvance/'.$id.'/edit');
+        }
+    }
+
+      public function getCashAdvance()
+    {
+        $cashadvance = CashAdvance::select(['id','employees_name','email','requested_amount',  'status', 'created_at'])->get();
+        return Datatables::of($cashadvance)
+        ->addColumn('action', function ($cashadvance) {
+                return '<a href="cashadvance/'.$cashadvance->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+            })
+            ->make(true);
     }
 
     /**

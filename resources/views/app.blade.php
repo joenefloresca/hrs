@@ -276,7 +276,7 @@
     <script src="{{ asset('js/plugins/pace/pace.min.js') }}"></script>
 
     <!-- Data picker -->
-   <script src="{{ asset('js/plugins/datapicker/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('js/plugins/datapicker/bootstrap-datepicker.js') }}"></script>
 
     <!-- Data Tables -->
     <script src="{{ asset('js/plugins/dataTables/jquery.dataTables.js') }}"></script>
@@ -295,7 +295,11 @@
     @yield('changeschedule-create')
     @yield('payrollqueries-create')
     @yield('payroll-queries')
+<<<<<<< HEAD
+    @yield('cash-advance')
+=======
     @yield('changeschedule-list')
+>>>>>>> b5f6a9093f7cdb28ed3ed8d0bcaefd0bc944bec6
 
 </body>
 </html>
