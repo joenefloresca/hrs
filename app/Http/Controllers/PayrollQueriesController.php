@@ -28,7 +28,7 @@ class PayrollQueriesController extends Controller
      */
     public function index()
     {
-        //
+        return view('payrollqueries.index');
     }
 
     /**
@@ -112,6 +112,7 @@ class PayrollQueriesController extends Controller
         //
     }
 
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -122,6 +123,7 @@ class PayrollQueriesController extends Controller
     {
         //
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -135,6 +137,18 @@ class PayrollQueriesController extends Controller
         //
     }
 
+
+     public function getPayrollQueries()
+    {
+        $payrollqueries = Payrollqueries::select(['id','name','date','department','payroll', 'created_at', 'status'])->get();
+        return Datatables::of($payrollqueries)
+        ->addColumn('action', function ($payrollqueries) {
+                return '<a href="payrollqueries/'.$payrollqueries->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+            })
+            ->make(true);
+    }
+
+
     /**
      * Remove the specified resource from storage.
      *
@@ -145,4 +159,6 @@ class PayrollQueriesController extends Controller
     {
         //
     }
+
+    
 }

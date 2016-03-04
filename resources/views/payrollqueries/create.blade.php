@@ -99,8 +99,6 @@
                                     <div class="col-sm-10"><input type="text" name="date_recieved_by" id="date_recieved_by" class="form-control"></div>
                                 </div>
 
-                         
-
                                 <div class="hr-line-dashed"></div>
 
                                 <div class="form-group ">
@@ -128,8 +126,6 @@
                                     <div class="col-sm-10"><input type="text" name="date_acknowledge" id="date_acknowledge" class="form-control"></div>
                                 </div>
 
-
-                        
                                 <div class="hr-line-dashed"></div>
 
                                 <div class="form-group">

@@ -61,65 +61,67 @@
                         <li><a href="dashboard_4_1.html">Dashboard v.4</a></li>
                         <li><a href="dashboard_5.html">Dashboard v.5 <span class="label label-primary pull-right">NEW</span></a></li>
                     </ul>
-                </li>
-               
-            
+                </li> 
                 
-                
-                <li class="active">
+                <li>
                     <a href="#"><i class="fa fa-money"></i> <span class="nav-label">Request of Payment</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="active"><a href="{{ url('requestpayment/create') }}">Submit Form</a></li>
                     </ul>
                 </li>
                 
-                <li class="active">
+                <li>
                     <a href="#"><i class="fa fa-eraser"></i> <span class="nav-label">Pay Descrepancies</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="active"><a href="{{ url('paydescrepancies/create') }}">Submit Form</a></li>
                     </ul>
                 </li>
-                <li class="active">
+
+                <li>
                     <a href="#"><i class="fa fa-clock-o"></i> <span class="nav-label">Schedule Change</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="active"><a href="{{ url('changeschedule/create') }}">Submit Form</a></li>
                     </ul>
                 </li>
-                <li class="active">
+
+                <li>
                     <a href="#"><i class="fa fa-calendar-o"></i> <span class="nav-label">Leave Request</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="active"><a href="{{ url('leaverequest/create') }}">Submit Form</a></li>
                         <li class="active"><a href="{{ url('leaverequest') }}">Submitted Forms</a></li>
                     </ul>
                 </li>
-                <li class="active">
+
+                <li>
                     <a href="#"><i class="fa fa-calendar"></i> <span class="nav-label">Time IN/OUT Change</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="active"><a href="{{ url('timechange/create') }}">Submit Form</a></li>
                     </ul>
                 </li>
-                <li class="active">
+
+                <li>
                     <a href="#"><i class="fa fa-cc-mastercard"></i> <span class="nav-label">Payroll Queries</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="active"><a href="{{ url('payrollqueries/create') }}">Submit Form</a></li>
+                        <li class="active"><a href="{{ url('payrollqueries') }}">Submitted Form</a></li>
                     </ul>
                 </li>
 
-                 <li class="active">
+                <li>
                     <a href="#"><i class="fa fa-credit-card"></i> <span class="nav-label">Cash Advance</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="active"><a href="{{ url('cashadvance/create') }}">Submit Form</a></li>
+                        <li class="active"><a href="{{ url('cashadvance') }}">Submitted Form</a></li>
                     </ul>
                 </li>
 
-                <li class="active">
+                <li>
                     <a href="#"><i class="fa fa-clock-o"></i> <span class="nav-label">Overtime Application</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="active"><a href="{{ url('overtimeform/create') }}">Submit Form</a></li>
                     </ul>
                 </li>
-
-                
+   
             </ul>
 
         </div>
@@ -281,14 +283,14 @@
     <script src="{{ asset('js/plugins/dataTables/dataTables.responsive.js') }}"></script>
     <script src="{{ asset('js/plugins/dataTables/dataTables.tableTools.min.js') }}"></script>
 
-
-    
     @yield('home')
     @yield('leave-create')
     @yield('leave-list')
     @yield('cashadvance-create')
     @yield('payrollqueries-create')
     @yield('changeschedule-create')
+    @yield('payrollqueries-create')
+    @yield('payroll-queries')
 
 </body>
 </html>
