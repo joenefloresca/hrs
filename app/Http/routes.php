@@ -47,11 +47,10 @@ Route::resource('overtimeform', 'OvertimeFormController');
 /* Ajax routes */
 Route::get('leave-list', 'LeaveRequestController@getLeaveList');
 Route::get('payroll-queries', 'PayrollQueriesController@getPayrollQueries');
-<<<<<<< HEAD
+
 Route::get('cash-advance', 'CashAdvanceController@getCashAdvance');
-=======
+
 Route::get('schedule-list', 'ChangeScheduleController@getScheduleList');
->>>>>>> b5f6a9093f7cdb28ed3ed8d0bcaefd0bc944bec6
 
 Route::get('approve-leave/{id}', 'LeaveRequestController@approveLeave');
 
