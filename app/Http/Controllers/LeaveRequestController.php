@@ -169,9 +169,7 @@ class LeaveRequestController extends Controller
         return Datatables::of($leave)
         ->addColumn('action', function ($leave) {
                 return '<a href="leaverequest/'.$leave->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
-            })
-            ->make(true);
-
+            })->make(true);
     }
 
     public function approveLeave()

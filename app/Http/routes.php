@@ -21,6 +21,10 @@ Route::get('home', function () {
     return view('home');
 });
 
+Route::get('config', function () {
+    return view('config');
+});
+
 Route::get('logs', function () {
 	$logs = Log::select(['id','description','created_at'])->get();
     return Datatables::of($logs)->make();
@@ -40,11 +44,10 @@ Route::resource('payrollqueries', 'PayrollQueriesController');
 Route::resource('cashadvance', 'CashAdvanceController');
 Route::resource('overtimeform', 'OvertimeFormController');
 
-
-
 /* Ajax routes */
 Route::get('leave-list', 'LeaveRequestController@getLeaveList');
 Route::get('payroll-queries', 'PayrollQueriesController@getPayrollQueries');
+Route::get('schedule-list', 'ChangeScheduleController@getScheduleList');
 
 Route::get('approve-leave/{id}', 'LeaveRequestController@approveLeave');
 
