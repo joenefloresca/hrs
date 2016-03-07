@@ -103,6 +103,7 @@
                                     </div>
                                 </fieldset>
                                 <div class="hr-line-dashed"></div>
+
                                 <div class="form-group">
                                     <label class="col-sm-12 control-label">I hereby authorize <span class="text-danger">Quinn Data Facilities, Inc. Human Resource Department</span> to deduct my repayment amount from salary starting on</label>
                                     <br>
@@ -110,11 +111,13 @@
                                     <br>
                                     <div class="col-sm-10 col-md-offset-2"><input type="text" name="repayment_date" id="repayment_date" class="form-control"></div>
                                 </div>
+
                                 <div class="form-group">
                                     <div class="col-sm-4 col-sm-offset-2">
                                         <button class="btn btn-primary" type="submit">Submit</button>
                                     </div>
                                 </div>
+
                             </form>
                         </div>
                     </div>
