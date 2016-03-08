@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Models\OvertimeForm;
 use App\Http\Models\Log;
+use App\Http\Models\OvertimeFormH;
+use App\Http\Models\OvertimeFormI;
 use Auth;
 use Validator;
 use Redirect;
@@ -21,6 +22,7 @@ class OvertimeFormController extends Controller
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -28,8 +30,9 @@ class OvertimeFormController extends Controller
      */
     public function index()
     {
-        //
+        return view('overtimeform.index');
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -47,18 +50,12 @@ class OvertimeFormController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+     public function store(Request $request)
     {
         $rules = array(
-            'employees_name'   => 'required',
-            'home_address'     => 'required',
-            'email'            => 'required',
-            'contact_details'  => 'required',
-            'requested_amount' => 'required',
-            'reason'           => 'required',
-            'terms'            => 'required',
-            'amount'           => 'required',
-            'repayment_date'   => 'required',
+            'name'               => 'required',
+            'employee_no'        => 'required',
+            'department'         => 'required',
         );
 
         $validator = Validator::make(Input::all(), $rules);
@@ -68,25 +65,37 @@ class OvertimeFormController extends Controller
         }
         else
         {
-            
-            $cashadvance = new CashAdvance();
-            $cashadvance->employees_name     = Input::get('employees_name');
-            $cashadvance->home_address       = Input::get('home_address');
-            $cashadvance->email              = Input::get('email');
-            $cashadvance->contact_details    = Input::get('contact_details');
-            $cashadvance->requested_amount   = Input::get('requested_amount');
-            $cashadvance->reason             = Input::get('reason');
-            $cashadvance->terms              = Input::get('terms');
-            $cashadvance->amount             = Input::get('amount');
-            $cashadvance->repayment_date     = Input::get('repayment_date');
-            $cashadvance->submitted_by_id    = Auth::user()->id;
-            $cashadvance->save();
+            $overtime = new OvertimeFormH();
+            $overtime->name               = Input::get('name');
+            $overtime->employee_no        = Input::get('employee_no');
+            $overtime->department         = Input::get('department');
+            $overtime->submitted_by_id    = Auth::user()->id;
+            $overtime->save();
+
+            $date                       = Input::get('date');
+            $from                       = Input::get('from');
+            $to                         = Input::get('to');
+            $no_of_hours                = Input::get('no_of_hours');
+            $reason                     = Input::get('reason');
+            $overtime_application_header_id  = $overtime->id;
+
+            foreach ($date as $key => $value) {
+                $overtime_i                                   = new OvertimeFormI();
+                $overtime_i->overtime_application_header_id   = $overtime_application_header_id;
+                $overtime_i->date                             = $date[$key];
+                $overtime_i->from                             = $from[$key];
+                $overtime_i->to                               = $to[$key];
+                $overtime_i->no_of_hours                      = $no_of_hours[$key];
+                $overtime_i->reason                           = $reason[$key];
+                $overtime_i->save();
+            }
+
 
             $log = new Log();
-            $log->description   = Auth::user()->name." submitted new Cash Advance";
+            $log->description   = Auth::user()->name." submitted new Change Schedule";
             $log->save();
 
-            Session::flash('alert-success', 'Leave request submitted.');
+            Session::flash('alert-success', 'Change Schedule request submitted.');
             return Redirect::to('overtimeform/create');
 
         }
@@ -103,16 +112,7 @@ class OvertimeFormController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.
@@ -135,5 +135,30 @@ class OvertimeFormController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+
+     public function edit($id)
+     {
+         $header = OvertimeFormH::find($id);
+         return view('overtimeform.edit')->with(array('header'=>$header));
+     }
+
+       public function getOvertimeList()
+    {
+        $sched = OvertimeFormH::select(['id','name', 'employee_no', 'department', 'status', 'created_at'])->get();
+        return Datatables::of($sched)
+        ->addColumn('action', function ($sched) {
+                return '<a href="overtimeform/'.$sched->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+                <a href="overtimeform/'.$sched->id.'" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i> View</a>';
+            })
+        ->make(true);
     }
 }

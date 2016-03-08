@@ -81,7 +81,7 @@
                     <a href="#"><i class="fa fa-clock-o"></i> <span class="nav-label">Schedule Change</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="active"><a href="{{ url('changeschedule/create') }}">Submit Form</a></li>
-                        <li class="active"><a href="{{ url('changeschedule') }}">Submitted Forms</a></li>
+                        <li class="active"><a href="{{ url('changeschedule') }}">Submitted Form</a></li>
                     </ul>
                 </li>
 
@@ -121,11 +121,11 @@
                     <a href="#"><i class="fa fa-clock-o"></i> <span class="nav-label">Overtime Application</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="active"><a href="{{ url('overtimeform/create') }}">Submit Form</a></li>
+                        <li class="active"><a href="{{ url('overtimeform') }}">Submitted Form</a></li>
                     </ul>
                 </li>
    
             </ul>
-
         </div>
     </nav>
 
@@ -255,11 +255,9 @@
 	@yield('content')
 
 	<div class="footer">
-        <div class="pull-right">
-            10GB of <strong>250GB</strong> Free.
-        </div>
+        
         <div>
-            <strong>Copyright</strong> Example Company &copy; 2014-2015
+            <center><strong>Copyright</strong> Quinn Data Facilities &copy; <?php echo date("Y") ?></center>
         </div>
     </div>
 
@@ -294,12 +292,13 @@
     @yield('cashadvance-create')
     @yield('payrollqueries-create')
     @yield('changeschedule-create')
-    @yield('payrollqueries-create')
     @yield('payroll-queries')
     @yield('cash-advance')
     @yield('changeschedule-list')
     @yield('timechange-create')
     @yield('timechange-list')
+    @yield('overtimeform-create')
+    @yield('overtime-list')
 
 </body>
 </html>
