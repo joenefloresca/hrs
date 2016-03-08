@@ -59,37 +59,36 @@
             </div>
         </div>
 @endsection
-
 @section('cash-advance')
-        <script>
-        $(document).ready(function(){
-            $('#CashAdvance').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: 'cash-advance',
-                 "createdRow": function ( row, data, index ) {
+<script>
+$(document).ready(function(){
+    $('#CashAdvance').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: 'cash-advance',
+         "createdRow": function ( row, data, index ) {
 
-                    if ( data.status == 0 ) {
-                        $('td', row).eq(4).addClass('text-danger');
-                        $('td', row).eq(4).addClass('text-danger').text('Pending');
-                    }
-                    else
-                    {
-                        $('td', row).eq(4).addClass('text-success');
-                        $('td', row).eq(4).addClass('text-success').text('Approved');
-                    }
-                },
-                columns: [
-                    {data: 'id', name: 'id'},
-                    {data: 'employees_name', name: 'employees_name'},
-                    {data: 'email', name: 'email'},
-                    {data: 'requested_amount', name: 'requested_amount'},
-                    {data: 'status', name: 'status'},
-                    {data: 'created_at', name: 'created_at'},
-                    {data: 'action', name: 'action', orderable: true, searchable: true}
-                ]
-            });
-           
-        }); 
-        </script>           
+            if ( data.status == 0 ) {
+                $('td', row).eq(4).addClass('text-danger');
+                $('td', row).eq(4).addClass('text-danger').text('Pending');
+            }
+            else
+            {
+                $('td', row).eq(4).addClass('text-success');
+                $('td', row).eq(4).addClass('text-success').text('Approved');
+            }
+        },
+        columns: [
+            {data: 'id', name: 'id'},
+            {data: 'employees_name', name: 'employees_name'},
+            {data: 'email', name: 'email'},
+            {data: 'requested_amount', name: 'requested_amount'},
+            {data: 'status', name: 'status'},
+            {data: 'created_at', name: 'created_at'},
+            {data: 'action', name: 'action', orderable: true, searchable: true}
+        ]
+    });
+   
+}); 
+</script>           
 @endsection
