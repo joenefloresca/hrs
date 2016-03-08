@@ -97,6 +97,7 @@
                     <a href="#"><i class="fa fa-calendar"></i> <span class="nav-label">Time IN/OUT Change</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="active"><a href="{{ url('timechange/create') }}">Submit Form</a></li>
+                        <li class="active"><a href="{{ url('timechange') }}">Submitted Form</a></li>
                     </ul>
                 </li>
 
@@ -295,11 +296,10 @@
     @yield('changeschedule-create')
     @yield('payrollqueries-create')
     @yield('payroll-queries')
-<<<<<<< HEAD
     @yield('cash-advance')
-=======
     @yield('changeschedule-list')
->>>>>>> b5f6a9093f7cdb28ed3ed8d0bcaefd0bc944bec6
+    @yield('timechange-create')
+    @yield('timechange-list')
 
 </body>
 </html>

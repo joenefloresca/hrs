@@ -51,22 +51,23 @@
                                   @endif
                                 @endforeach
                             </div>
-                            <form class="form-horizontal" role="form" method="POST" action="{{ url('timechange') }}">
+
+                            {!! Form::model($timechange, array('route' => array('timechange.update', $timechange->id), 'method' => 'PUT', 'class' => 'form-horizontal')) !!}
 
                                 <div class="form-group"><label class="col-sm-2 control-label">Employee Name</label>
-                                    <div class="col-sm-10"><input type="text" name="employee_name" class="form-control"></div>
+                                    <div class="col-sm-10"><input type="text" name="employee_name" class="form-control" value="{{$timechange->employee_name}}"></div>
                                 </div>
                                 <div class="form-group"><label class="col-sm-2 control-label">Date to changed</label>
-                                    <div class="col-sm-10"><input type="text" name="dateto_change" id="dateto_change" class="form-control"></div>
+                                    <div class="col-sm-10"><input type="text" name="dateto_change" id="dateto_change" class="form-control" value="{{$timechange->dateto_change}}"></div>
                                 </div>
                                 <div class="form-group"><label class="col-sm-2 control-label">Work Schedule</label>
-                                    <div class="col-sm-10"><input type="text" name="work_schedule" class="form-control"></div>
+                                    <div class="col-sm-10"><input type="text" name="work_schedule" class="form-control" value="{{$timechange->work_schedule}}"></div>
                                 </div>
                                 <div class="form-group"><label class="col-sm-2 control-label">Clock in Time:</label>
-                                    <div class="col-sm-10"><input type="text" name="clock_in" class="form-control"></div>
+                                    <div class="col-sm-10"><input type="text" name="clock_in" class="form-control" value="{{$timechange->clock_in}}"></div>
                                 </div>
                                 <div class="form-group"><label class="col-sm-2 control-label">Clock out Time:</label>
-                                    <div class="col-sm-10"><input type="text" name="clock_out" class="form-control"></div>
+                                    <div class="col-sm-10"><input type="text" name="clock_out" class="form-control" value="{{$timechange->clock_out}}"></div>
                                 </div>
                             
                                 <div class="hr-line-dashed"></div>
@@ -76,12 +77,13 @@
                                     <div class="form-group">
                                       <label for="select" class="col-lg-2 control-label">Select</label>
                                           <div class="col-lg-10">
-                                                <select class="form-control" name="change_reason" id="select">
-                                                  <option value="Biometrics malfunction">Biometrics malfunction</option>
-                                                  <option value="Change of Schedule">Change of Schedule</option>
-                                                  <option value="Official Business">Official Business</option>
-                                                  <option value="Office was locked">Office was locked</option>
-                                                </select>
+                                                 {!! Form::select('change_reason', [
+                                                    '' => 'Choose One', 
+                                                    'Biometrics malfunction' => 'Biometrics malfunction', 
+                                                    'Official Business' => 'Official Business',
+                                                    'Office was locked' => 'Office was locked',
+                                                    ],
+                                                $timechange->change_reason, array('class' => 'form-control')) !!}
                                           </div>
                                     </div>
                                 </fieldset>
@@ -92,7 +94,7 @@
                                     <legend>No Log-in/No Log-out:</legend>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Reason</label> 
-                                        <div class="col-sm-10"><textarea class="form-control" name="no_inout_reason" rows="3" id="textArea"></textarea></div>
+                                        <div class="col-sm-10"><textarea class="form-control" name="no_inout_reason" rows="3" id="textArea">{{$timechange->no_inout_reason}}</textarea></div>
                                     </div>
                                  </fieldset>
 
@@ -105,11 +107,25 @@
                                 <div class="form-group">
                                   <label for="select" class="col-lg-2 control-label">Select</label>
                                       <div class="col-lg-10">
-                                            <select class="form-control" name="form_required" id="select">
-                                              <option value="Employees explanation letter">Employee's explanation letter</option>
-                                              <option value="Dialer logged hours report from Technical Department">Dialer logged hours report from Technical Department</option>
-                                              <option value="Production report immediate supervisor">Production report immediate supervisor</option>
-                                            </select>
+                                            {!! Form::select('form_required', [
+                                                    '' => 'Choose One', 
+                                                    'Employees explanation letter' => 'Employees explanation letter', 
+                                                    'Dialer logged hours report from Technical Department' => 'Dialer logged hours report from Technical Department', 
+                                                    'Production report immediate supervisor' => 'Production report immediate supervisor', 
+                                                    ],
+                                            $timechange->form_required, array('class' => 'form-control')) !!}
+                                      </div>
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="select" class="col-lg-2 control-label">Status</label>
+                                      <div class="col-lg-10">
+                                            {!! Form::select('form_required', [
+                                                    '' => 'Choose One', 
+                                                    '0' => 'Pending', 
+                                                    '1' => 'Approved', 
+                                                    ],
+                                            $timechange->status, array('class' => 'form-control')) !!}
                                       </div>
                                 </div>
 
@@ -125,7 +141,7 @@
                                     </div>
                                 </div>
 
-                            </form>
+                            {!! Form::close() !!}
                         </div>
 
                     </div>

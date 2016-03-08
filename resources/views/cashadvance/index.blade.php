@@ -44,8 +44,6 @@
                                         <th>Employee Name</th>
                                         <th>Email</th>
                                         <th>Requested Amount:</th>
-                                      
-                                        <!-- <th>Department</th> -->
                                         <th>Status</th>
                                         <th>Date Created</th>
                                         <th>Action</th>
