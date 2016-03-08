@@ -109,6 +109,7 @@ class ChangeScheduleController extends Controller
         return view('changeschedule.show')->with(array('header' => $header, 'items' => $items));
     }
 
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -120,6 +121,8 @@ class ChangeScheduleController extends Controller
         $header = ChangeScheduleH::find($id);
         return view('changeschedule.edit')->with(array('header'=>$header));
     }
+
+
 
     /**
      * Update the specified resource in storage.
@@ -154,6 +157,8 @@ class ChangeScheduleController extends Controller
             return Redirect::to('changeschedule/'.$id.'/edit');
         }
     }
+
+    
 
     /**
      * Remove the specified resource from storage.
