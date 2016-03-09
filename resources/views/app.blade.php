@@ -117,6 +117,13 @@
                         <li class="active"><a href="{{ url('overtimeform') }}">Submitted Form</a></li>
                     </ul>
                 </li>
+                
+                <li>
+                    <a href="#"><i class="fa fa-users"></i> <span class="nav-label">Users</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li class="active"><a href="{{ url('user') }}">Users List</a></li>
+                    </ul>
+                </li>
    
             </ul>
         </div>
