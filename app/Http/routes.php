@@ -43,6 +43,7 @@ Route::resource('paydescrepancies', 'PayDescrepanciesController');
 Route::resource('payrollqueries', 'PayrollQueriesController');
 Route::resource('cashadvance', 'CashAdvanceController');
 Route::resource('overtimeform', 'OvertimeFormController');
+Route::resource('user', 'UserController');
 
 /* Ajax routes */
 Route::get('leave-list', 'LeaveRequestController@getLeaveList');
