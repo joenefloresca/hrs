@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\User;
+use Datatables;
 class UserController extends Controller
 {
     /**
@@ -83,5 +83,15 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+     public function getUserList()
+    {
+        $user = User::select(['id','name','id_number','department'])->get();
+        return Datatables::of($user)
+        ->addColumn('action', function ($user) {
+                return '<a href="user/'.$user->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+            })->make(true);
     }
 }

@@ -41,12 +41,9 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Employee Name</th>
-                                        <th>Email</th>
-                                        <th>Requested Amount:</th>
-                                        <th>Status</th>
-                                        <th>Date Created</th>
-                                        <th>Action</th>
+                                        <th>Name</th>
+                                        <th>ID Number</th>
+                                        <th>Department</th>
                                     </tr>
                                 </thead>
 
@@ -80,12 +77,9 @@ $(document).ready(function(){
         },
         columns: [
             {data: 'id', name: 'id'},
-            {data: 'employees_name', name: 'employees_name'},
-            {data: 'email', name: 'email'},
-            {data: 'requested_amount', name: 'requested_amount'},
-            {data: 'status', name: 'status'},
-            {data: 'created_at', name: 'created_at'},
-            {data: 'action', name: 'action', orderable: true, searchable: true}
+            {data: 'name', name: 'name'},
+            {data: 'id_number', name: 'id_number'},
+            {data: 'department', name: 'department'}
         ]
     });
    
