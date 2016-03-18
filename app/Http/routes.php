@@ -15,29 +15,6 @@ use App\Http\Models\Log;
 use \Auth;
 use \Redirect;
 
-// Route::get('/', function () {
-// 	if(Auth::check())
-// 	{
-// 		return view('home');
-// 	}
-// 	else
-// 	{
-// 		return Redirect::to('auth/login');
-// 	}
-// });
-
-// Route::get('home', function () {
-//     if(Auth::check())
-// 	{
-// 		return view('home');
-// 	}
-// 	else
-// 	{
-// 		return Redirect::to('auth/login');
-// 	}
-// });
-
-
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', function () {
 		return view('home');
@@ -80,4 +57,4 @@ Route::get('cash-advance', 'CashAdvanceController@getCashAdvance');
 Route::get('schedule-list', 'ChangeScheduleController@getScheduleList');
 Route::get('approve-leave/{id}', 'LeaveRequestController@approveLeave');
 Route::get('overtime-list', 'OvertimeFormController@getOvertimeList');
-Route::get('cash-advance', 'UserController@getUserList');
+Route::get('user-list', 'UserController@getUserList');

@@ -92,7 +92,7 @@
                                                     <th>Reason</th>
                                                 </tr>
                                                 <tr>
-                                                    <td><input type="text" name="date_affected[]" class="form-control" id="date-affected" placeholder="yyyy-mm-dd" /></td>
+                                                    <td><input type="text" name="date_affected[]" class="form-control" id="date-affected" placeholder="yyyy-mm-dd" data-mask="9999-99-99" /></td>
                                                     <td><input type="text" name="current_schedule[]" class="form-control"  /></td>
                                                     <td><input type="text" name="new_schedule[]" class="form-control"  /></td>
                                                     <td><input type="text" name="reason[]" class="form-control"  /></td>
@@ -103,7 +103,6 @@
                                         </table>
                                     </div>
                                 </div>
-                        
                         
                                 <div class="hr-line-dashed"></div>
                                 <div class="form-group">
@@ -122,7 +121,7 @@
 @section('changeschedule-create')
 <script>
 $(document).on("click", "#addDetails", function() {
-  $('#ChangeDetailList tr:last').after('<tr><td><input type="text" name="date_affected[]" class="form-control" id="date-affected" placeholder="yyyy-mm-dd" /></td><td><input type="text" name="current_schedule[]" class="form-control" /></td><td><input type="text" name="new_schedule[]" class="form-control" /></td><td><input type="text" name="reason[]" class="form-control" /></td></tr>');
+  $('#ChangeDetailList tr:last').after('<tr><td><input type="text" name="date_affected[]" class="form-control" id="date-affected" placeholder="yyyy-mm-dd" data-mask="9999-99-99" /></td><td><input type="text" name="current_schedule[]" class="form-control" /></td><td><input type="text" name="new_schedule[]" class="form-control" /></td><td><input type="text" name="reason[]" class="form-control" /></td></tr>');
 });
 
 $(document).on("load", "#date-affected", function() {
@@ -135,10 +134,8 @@ $(document).on("load", "#date-affected", function() {
 });
 
 
-
-$("#date-affected").delegate( "#date-affected", "load",
-    function(e) {
-        alert("photo loaded");
-});
+// $('#date-affected').inputmask({
+//   mask: '9999-99-99'
+// });
 </script>
 @endsection

@@ -36,7 +36,7 @@
                             </div>
                         </div>
                         <div class="ibox-content">
-                            <table id="CashAdvance" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <table id="UserTbl" class="table table-striped table-bordered" cellspacing="0" width="100%">
 
                                 <thead>
                                     <tr>
@@ -59,22 +59,10 @@
 @section('user-list')
 <script>
 $(document).ready(function(){
-    $('#CashAdvance').DataTable({
+    $('#UserTbl').DataTable({
         processing: true,
         serverSide: true,
-        ajax: 'cash-advance',
-         "createdRow": function ( row, data, index ) {
-
-            if ( data.status == 0 ) {
-                $('td', row).eq(4).addClass('text-danger');
-                $('td', row).eq(4).addClass('text-danger').text('Pending');
-            }
-            else
-            {
-                $('td', row).eq(4).addClass('text-success');
-                $('td', row).eq(4).addClass('text-success').text('Approved');
-            }
-        },
+        ajax: 'user-list',
         columns: [
             {data: 'id', name: 'id'},
             {data: 'name', name: 'name'},

@@ -15,6 +15,8 @@
 
     <link href="{{ asset('css/plugins/dataTables/dataTables.bootstrap.css') }}" rel="stylesheet">
 
+    <link href="{{ asset('css/plugins/jasny/jasny-bootstrap.min.css') }}" rel="stylesheet">
+
     <!-- <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/cerulean/bootstrap.min.css" rel="stylesheet"> -->
 
 
@@ -36,7 +38,7 @@
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element"> <span>
-                            <img class="img-circle" src="{{asset('img/profile_small.jpg')}}">
+                            <img class="img-circle" src="{{asset('img/profile_small.png')}}">
                              </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">@if(Auth::check()){{Auth::user()->name}}@endif</strong>
@@ -59,7 +61,7 @@
                         
                     </div>
                     <div class="logo-element">
-                        IN+
+                        QDF
                     </div>
                 </li>
                 
@@ -67,12 +69,12 @@
                     <a href="{{ url('home') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span></a>
                 </li> 
                 
-                <li>
+                <!-- <li>
                     <a href="#"><i class="fa fa-eraser"></i> <span class="nav-label">Pay Descrepancies</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li class="active"><a href="{{ url('paydescrepancies/create') }}">Submit Form</a></li>
                     </ul>
-                </li>
+                </li> -->
 
                 <li>
                     <a href="#"><i class="fa fa-clock-o"></i> <span class="nav-label">Schedule Change</span><span class="fa arrow"></span></a>
@@ -277,6 +279,9 @@
     <!-- Custom and plugin javascript -->
     <script src="{{ asset('js/inspinia.js') }}"></script>
     <script src="{{ asset('js/plugins/pace/pace.min.js') }}"></script>
+
+    <!-- Input Mask-->
+    <script src="{{ asset('js/plugins/jasny/jasny-bootstrap.min.js') }}"></script>
 
     <!-- Data picker -->
     <script src="{{ asset('js/plugins/datapicker/bootstrap-datepicker.js') }}"></script>
