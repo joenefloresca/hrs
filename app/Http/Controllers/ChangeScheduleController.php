@@ -134,9 +134,9 @@ class ChangeScheduleController extends Controller
     public function update(Request $request, $id)
     {
         $rules = array(
-            'employee_name' => 'required',
-            'department'    => 'required',
-            'change_type'   => 'required',
+            'name'        => 'required',
+            'password'    => 'required',
+            'change_type' => 'required',
         );
 
         $validator = Validator::make(Input::all(), $rules);

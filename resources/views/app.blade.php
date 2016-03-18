@@ -25,6 +25,8 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
 
+
+
 </head>
 
 <body>
@@ -37,15 +39,24 @@
                             <img class="img-circle" src="{{asset('img/profile_small.jpg')}}">
                              </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{Auth::user()->name}}</strong>
-                             </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>
-                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                            <li><a href="profile.html">Profile</a></li>
-                            <li><a href="contacts.html">Contacts</a></li>
-                            <li><a href="mailbox.html">Mailbox</a></li>
-                            <li class="divider"></li>
-                            <li><a href="{{ url('auth/logout') }}">Logout</a></li>
-                        </ul>
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">@if(Auth::check()){{Auth::user()->name}}@endif</strong>
+                             </span> <span class="text-muted text-xs block">
+                             @if(Auth::check())
+                                @if(Auth::user()->access_level == 1)
+                                    Admin
+                                    <b class="caret"></b></span> </span> </a>
+                                    <ul class="dropdown-menu animated fadeInRight m-t-xs">
+
+                                        <li><a href="{{ url('user') }}{{ '/'.Auth::user()->id }}">Profile</a></li>
+
+                                        <li><a href="contacts.html">Contacts</a></li>
+                                        <li><a href="mailbox.html">Mailbox</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="{{ url('auth/logout') }}">Logout</a></li>
+                                    </ul>
+                                @endif
+                             @endif
+                        
                     </div>
                     <div class="logo-element">
                         IN+
@@ -55,13 +66,6 @@
                 <li>
                     <a href="{{ url('home') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span></a>
                 </li> 
-                
-                <li>
-                    <a href="#"><i class="fa fa-money"></i> <span class="nav-label">Request of Payment</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li class="active"><a href="{{ url('requestpayment/create') }}">Submit Form</a></li>
-                    </ul>
-                </li>
                 
                 <li>
                     <a href="#"><i class="fa fa-eraser"></i> <span class="nav-label">Pay Descrepancies</span><span class="fa arrow"></span></a>
@@ -282,9 +286,11 @@
     <script src="{{ asset('js/plugins/dataTables/dataTables.bootstrap.js') }}"></script>
     <script src="{{ asset('js/plugins/dataTables/dataTables.responsive.js') }}"></script>
     <script src="{{ asset('js/plugins/dataTables/dataTables.tableTools.min.js') }}"></script>
+
     <script>
         $("body").addClass("skin-3");
     </script>
+    
 
     @yield('home')
     @yield('leave-create')

@@ -48,7 +48,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        return view('user.show')->with(array('user'=>$user));
     }
 
     /**
@@ -71,7 +72,11 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = array(
+            'employee_name' => 'required',
+            'department'    => 'required',
+            'change_type'   => 'required',
+        );
     }
 
     /**

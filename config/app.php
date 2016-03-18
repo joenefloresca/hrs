@@ -139,6 +139,7 @@ return [
         Yajra\Datatables\DatatablesServiceProvider::class,
         'Collective\Html\HtmlServiceProvider',
 
+
         /*
          * Application Service Providers...
          */

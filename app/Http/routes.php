@@ -12,14 +12,41 @@
 */
 use \Datatables;
 use App\Http\Models\Log;
+use \Auth;
+use \Redirect;
 
-Route::get('/', function () {
-    return view('home');
+// Route::get('/', function () {
+// 	if(Auth::check())
+// 	{
+// 		return view('home');
+// 	}
+// 	else
+// 	{
+// 		return Redirect::to('auth/login');
+// 	}
+// });
+
+// Route::get('home', function () {
+//     if(Auth::check())
+// 	{
+// 		return view('home');
+// 	}
+// 	else
+// 	{
+// 		return Redirect::to('auth/login');
+// 	}
+// });
+
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', function () {
+		return view('home');
+	});
+	Route::get('home', function () {
+		return view('home');
+	});
 });
 
-Route::get('home', function () {
-    return view('home');
-});
 
 Route::get('config', function () {
     return view('config');
@@ -35,7 +62,7 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
-Route::resource('requestpayment', 'RequestPaymentController');
+
 Route::resource('changeschedule', 'ChangeScheduleController');
 Route::resource('timechange', 'TimeChangeController');
 Route::resource('leaverequest', 'LeaveRequestController');
@@ -54,4 +81,3 @@ Route::get('schedule-list', 'ChangeScheduleController@getScheduleList');
 Route::get('approve-leave/{id}', 'LeaveRequestController@approveLeave');
 Route::get('overtime-list', 'OvertimeFormController@getOvertimeList');
 Route::get('cash-advance', 'UserController@getUserList');
-
