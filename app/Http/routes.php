@@ -39,7 +39,6 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
-
 Route::resource('changeschedule', 'ChangeScheduleController');
 Route::resource('timechange', 'TimeChangeController');
 Route::resource('leaverequest', 'LeaveRequestController');
@@ -47,7 +46,12 @@ Route::resource('paydescrepancies', 'PayDescrepanciesController');
 Route::resource('payrollqueries', 'PayrollQueriesController');
 Route::resource('cashadvance', 'CashAdvanceController');
 Route::resource('overtimeform', 'OvertimeFormController');
-Route::resource('user', 'UserController');
+
+Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['Administrator']], function()
+{
+	Route::resource('user', 'UserController', ['only' => ['index']]);
+});
+
 
 /* Ajax routes */
 Route::get('leave-list', 'LeaveRequestController@getLeaveList');

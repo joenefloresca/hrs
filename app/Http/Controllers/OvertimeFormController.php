@@ -90,12 +90,11 @@ class OvertimeFormController extends Controller
                 $overtime_i->save();
             }
 
-
             $log = new Log();
-            $log->description   = Auth::user()->name." submitted new Change Schedule";
+            $log->description   = Auth::user()->name." Submitted Overtime Request";
             $log->save();
 
-            Session::flash('alert-success', 'Change Schedule request submitted.');
+            Session::flash('alert-success', 'Overtime Request Submitted.');
             return Redirect::to('overtimeform/create');
 
         }
@@ -123,7 +122,34 @@ class OvertimeFormController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = array(
+            'name'               => 'required',
+            'employee_no'        => 'required',
+            'department'         => 'required',
+        );
+
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->fails())
+        {
+            return Redirect::to('overtimeform/'.$id.'/edit')->withInput()->withErrors($validator);
+        }
+        else
+        {
+            $overtime = OvertimeFormH::find($id);
+            $overtime->name               = Input::get('name');
+            $overtime->employee_no        = Input::get('employee_no');
+            $overtime->department         = Input::get('department');
+            $overtime->submitted_by_id    = Auth::user()->id;
+            $overtime->status             = Input::get('status');
+            $overtime->save();
+
+            $log = new Log();
+            $log->description   = Auth::user()->name." Updated Overtime Request ID ".$id;
+            $log->save();
+
+            Session::flash('alert-success', 'Overtime Request Updated ID '.$id);
+            return Redirect::to('overtimeform/create');
+        }
     }
 
     /**

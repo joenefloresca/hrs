@@ -82,7 +82,7 @@ div#datepicker {
 
                                     <div class="form-group ">
                                         <label class="col-sm-2 control-label">Reason/s:</label>
-                                        <div class="col-sm-10"><textarea class="form-control" name="reason" value="{{$cashadvance->reason}}"  id="textArea"></textarea></div>
+                                        <div class="col-sm-10"><textarea class="form-control" name="reason" id="textArea">{{$cashadvance->reason}}</textarea></div>
                                     </div>
                             
                                     <div class="hr-line-dashed"></div>

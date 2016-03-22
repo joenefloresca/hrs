@@ -78,10 +78,10 @@ class LeaveRequestController extends Controller
             $leave->save();
 
             $log = new Log();
-            $log->description   = Auth::user()->name." submitted new Leave Request";
+            $log->description   = Auth::user()->name." Submitted Leave Request";
             $log->save();
 
-            Session::flash('alert-success', 'Leave request submitted.');
+            Session::flash('alert-success', 'Leave Request Submitted.');
             return Redirect::to('leaverequest/create');
 
         }
@@ -148,7 +148,11 @@ class LeaveRequestController extends Controller
             $leave->submitted_by_id = Auth::user()->id;
             $leave->save();
 
-            Session::flash('alert-success', 'Leave request updated.');
+            $log = new Log();
+            $log->description   = Auth::user()->name." Updated Leave Request ID ".$id;
+            $log->save();
+
+            Session::flash('alert-success', 'Leave Request Updated ID '.$id);
             return Redirect::to('leaverequest/'.$id.'/edit');
         }
     }

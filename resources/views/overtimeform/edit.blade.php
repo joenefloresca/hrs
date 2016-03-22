@@ -53,7 +53,7 @@
                                 @endforeach
                             </div>
 
-                            {!! Form::model($header, array('route' => array('changeschedule.update', $header->id), 'method' => 'PUT', 'class' => 'form-horizontal')) !!}    
+                            {!! Form::model($header, array('route' => array('overtimeform.update', $header->id), 'method' => 'PUT', 'class' => 'form-horizontal')) !!}    
                             
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 

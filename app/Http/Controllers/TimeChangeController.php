@@ -80,10 +80,10 @@ class TimeChangeController extends Controller
             $timechange->save();
 
             $log = new Log();
-            $log->description   = Auth::user()->name." submitted new Time Change Request";
+            $log->description   = Auth::user()->name." Submitted Time Change Request";
             $log->save();
 
-            Session::flash('alert-success', 'Time change request submitted.');
+            Session::flash('alert-success', 'Time Change Request Submitted.');
             return Redirect::to('timechange/create');
         }
     }
@@ -150,7 +150,11 @@ class TimeChangeController extends Controller
             $timechange->submitted_by_id    = Auth::user()->id;
             $timechange->save();
 
-            Session::flash('alert-success', 'Time change request updated.');
+            $log = new Log();
+            $log->description   = Auth::user()->name." Updated Time Change Request ID ".$id;
+            $log->save();
+
+            Session::flash('alert-success', 'Time Change Request Updated ID '.$id);
             return Redirect::to('timechange/'.$id.'/edit');
         }
     }

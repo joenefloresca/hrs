@@ -87,10 +87,10 @@ class ChangeScheduleController extends Controller
             }
 
             $log = new Log();
-            $log->description   = Auth::user()->name." submitted new Change Schedule";
+            $log->description   = Auth::user()->name." Submitted Change Schedule Request";
             $log->save();
 
-            Session::flash('alert-success', 'Change Schedule request submitted.');
+            Session::flash('alert-success', 'Change Schedule Request Submitted.');
             return Redirect::to('changeschedule/create');
 
         }
@@ -151,7 +151,11 @@ class ChangeScheduleController extends Controller
             $header->status         = Input::get('status');
             $header->save();
 
-            Session::flash('alert-success', 'Change schedule request updated.');
+            $log = new Log();
+            $log->description   = Auth::user()->name." Updated Change Schedule Request ID ".$id;
+            $log->save();
+
+            Session::flash('alert-success', 'Change Schedule Request Updated ID '.$id);
             return Redirect::to('changeschedule/'.$id.'/edit');
         }
     }

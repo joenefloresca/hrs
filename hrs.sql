@@ -67,7 +67,7 @@ CREATE TABLE `changeschedules_header` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -76,7 +76,7 @@ CREATE TABLE `changeschedules_header` (
 
 LOCK TABLES `changeschedules_header` WRITE;
 /*!40000 ALTER TABLE `changeschedules_header` DISABLE KEYS */;
-INSERT INTO `changeschedules_header` VALUES (1,'Joene Floresca','IT','Change in work schedule',1,1,'2016-03-02 15:24:16','2016-03-04 10:18:40'),(2,'Argel Piamonte','MIS','Change of Day off',1,0,'2016-03-04 10:21:46','2016-03-04 10:21:46');
+INSERT INTO `changeschedules_header` VALUES (1,'Joene Floresca','IT','Change in work schedule',1,1,'2016-03-02 15:24:16','2016-03-04 10:18:40'),(2,'Argel Piamonte','MIS','Change of Day off',1,0,'2016-03-04 10:21:46','2016-03-04 10:21:46'),(3,'Joene Floresca','MIS','Change in work schedule',1,1,'2016-03-18 14:50:43','2016-03-18 14:52:59');
 /*!40000 ALTER TABLE `changeschedules_header` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -97,7 +97,7 @@ CREATE TABLE `changeschedules_items` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -106,7 +106,7 @@ CREATE TABLE `changeschedules_items` (
 
 LOCK TABLES `changeschedules_items` WRITE;
 /*!40000 ALTER TABLE `changeschedules_items` DISABLE KEYS */;
-INSERT INTO `changeschedules_items` VALUES (1,1,'2016-01-01','MWF','MMM','Test','2016-03-02 15:24:16','2016-03-02 15:24:16'),(2,1,'2016-01-02','FTS','SD','Test 2','2016-03-02 15:24:16','2016-03-02 15:24:16'),(3,1,'2016-01-03','GGH','SED','Test 3','2016-03-02 15:24:16','2016-03-02 15:24:16'),(4,2,'2016-01-01','MWF','THF','Testing','2016-03-04 10:21:46','2016-03-04 10:21:46');
+INSERT INTO `changeschedules_items` VALUES (1,1,'2016-01-01','MWF','MMM','Test','2016-03-02 15:24:16','2016-03-02 15:24:16'),(2,1,'2016-01-02','FTS','SD','Test 2','2016-03-02 15:24:16','2016-03-02 15:24:16'),(3,1,'2016-01-03','GGH','SED','Test 3','2016-03-02 15:24:16','2016-03-02 15:24:16'),(4,2,'2016-01-01','MWF','THF','Testing','2016-03-04 10:21:46','2016-03-04 10:21:46'),(5,3,'2016-03-18','AAA','AAA','TEST','2016-03-18 14:50:43','2016-03-18 14:50:43'),(6,3,'2016-03-11','BBB','BBB','TEST2','2016-03-18 14:50:43','2016-03-18 14:50:43'),(7,3,'2016-03-12','CCC','CCC','TEST3','2016-03-18 14:50:43','2016-03-18 14:50:43'),(8,3,'2016-03-13','DDD','DDD','TEST4','2016-03-18 14:50:43','2016-03-18 14:50:43'),(9,3,'2016-03-14','EEE','EEE','TEST5','2016-03-18 14:50:44','2016-03-18 14:50:44'),(10,3,'2016-03-15','FFF','FFF','TEST6','2016-03-18 14:50:44','2016-03-18 14:50:44');
 /*!40000 ALTER TABLE `changeschedules_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -157,7 +157,7 @@ CREATE TABLE `logs` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -166,7 +166,7 @@ CREATE TABLE `logs` (
 
 LOCK TABLES `logs` WRITE;
 /*!40000 ALTER TABLE `logs` DISABLE KEYS */;
-INSERT INTO `logs` VALUES (1,'Joene Floresca submitted new Leave Request','2016-02-25 10:36:17','2016-02-25 10:36:17'),(2,'Joene Floresca submitted new Leave Request','2016-02-25 11:03:18','2016-02-25 11:03:18'),(3,'Joene Floresca submitted new Leave Request','2016-02-25 11:15:32','2016-02-25 11:15:32'),(4,'Joene Floresca submitted new Cash Advance','2016-02-29 09:37:50','2016-02-29 09:37:50'),(5,'Joene Floresca submitted new Cash Advance','2016-02-29 09:41:30','2016-02-29 09:41:30'),(6,'Joene Floresca submitted new Payroll Queries','2016-02-29 15:12:56','2016-02-29 15:12:56'),(7,'Joene Floresca submitted new Time Change Request','2016-03-07 11:34:22','2016-03-07 11:34:22');
+INSERT INTO `logs` VALUES (1,'Joene Floresca submitted new Leave Request','2016-02-25 10:36:17','2016-02-25 10:36:17'),(2,'Joene Floresca submitted new Leave Request','2016-02-25 11:03:18','2016-02-25 11:03:18'),(3,'Joene Floresca submitted new Leave Request','2016-02-25 11:15:32','2016-02-25 11:15:32'),(4,'Joene Floresca submitted new Cash Advance','2016-02-29 09:37:50','2016-02-29 09:37:50'),(5,'Joene Floresca submitted new Cash Advance','2016-02-29 09:41:30','2016-02-29 09:41:30'),(6,'Joene Floresca submitted new Payroll Queries','2016-02-29 15:12:56','2016-02-29 15:12:56'),(7,'Joene Floresca submitted new Time Change Request','2016-03-07 11:34:22','2016-03-07 11:34:22'),(8,'Joene Floresca submitted new Change Schedule','2016-03-18 14:50:44','2016-03-18 14:50:44');
 /*!40000 ALTER TABLE `logs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -189,7 +189,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES ('2014_10_12_000000_create_users_table',1),('2014_10_12_100000_create_password_resets_table',1);
+INSERT INTO `migrations` VALUES ('2014_10_12_000000_create_users_table',1),('2014_10_12_100000_create_password_resets_table',1),('2016_03_11_072929_create-social-logins',2),('2016_03_18_153353_create_cashadvances_table',0),('2016_03_18_153353_create_changeschedules_header_table',0),('2016_03_18_153353_create_changeschedules_items_table',0),('2016_03_18_153353_create_leaverequests_table',0),('2016_03_18_153353_create_logs_table',0),('2016_03_18_153353_create_overtime_application_header_table',0),('2016_03_18_153353_create_overtime_application_items_table',0),('2016_03_18_153353_create_password_resets_table',0),('2016_03_18_153353_create_payrollqueries_table',0),('2016_03_18_153353_create_social_logins_table',0),('2016_03_18_153353_create_timechanges_table',0),('2016_03_18_153353_create_users_table',0),('2016_03_18_153356_add_foreign_keys_to_social_logins_table',0);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -319,6 +319,35 @@ INSERT INTO `payrollqueries` VALUES (5,'Joene Floresca','2016-02-16','MIS','Feb 
 UNLOCK TABLES;
 
 --
+-- Table structure for table `social_logins`
+--
+
+DROP TABLE IF EXISTS `social_logins`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `social_logins` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) unsigned NOT NULL,
+  `provider` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `social_id` text COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  KEY `social_logins_user_id_index` (`user_id`),
+  CONSTRAINT `social_logins_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `social_logins`
+--
+
+LOCK TABLES `social_logins` WRITE;
+/*!40000 ALTER TABLE `social_logins` DISABLE KEYS */;
+/*!40000 ALTER TABLE `social_logins` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `timechanges`
 --
 
@@ -383,7 +412,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Joene Floresca','$2y$10$5vuLHHvekpZ2/VxrDIZCmem557S9yhzPW.F77ZYcOe1aJVFuEXm.e',0,1775,'1775','IT','vocSrpB40sEPlBFozcAUKNJThudqotzLxnbojOmDfHjX9aKW5EIzd7eAM2tu','2016-02-29 01:03:22','2016-03-07 01:15:41');
+INSERT INTO `users` VALUES (1,'Joene Floresca','$2y$10$5vuLHHvekpZ2/VxrDIZCmem557S9yhzPW.F77ZYcOe1aJVFuEXm.e',1,1775,'1775','IT','iRCjaWFBpPQ5ivS025l9oHlB1952psNxCeQaFFA5yn5Crf6DnJHW8RkQ0eTT','2016-02-29 01:03:22','2016-03-18 07:17:40');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -396,4 +425,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-08 16:30:02
+-- Dump completed on 2016-03-21 16:09:40

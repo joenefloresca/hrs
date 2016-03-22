@@ -82,10 +82,10 @@ class CashAdvanceController extends Controller
             $cashadvance->save();
 
             $log = new Log();
-            $log->description   = Auth::user()->name." submitted new Cash Advance";
+            $log->description   = Auth::user()->name." Submitted Cash Advance Request";
             $log->save();
 
-            Session::flash('alert-success', 'Cash Advance request submitted.');
+            Session::flash('alert-success', 'Cash Advance Request Submitted.');
             return Redirect::to('cashadvance/create');
 
         }
@@ -156,7 +156,11 @@ class CashAdvanceController extends Controller
             $cashadvance->submitted_by_id    = Auth::user()->id;
             $cashadvance->save();
 
-            Session::flash('alert-success', 'Cash Advance request updated.');
+            $log = new Log();
+            $log->description   = Auth::user()->name." Updated Cash Advance Request ID ".$id;
+            $log->save();
+
+            Session::flash('alert-success', 'Cash Advance Request Updated ID '.$id);
             return Redirect::to('cashadvance/'.$id.'/edit');
         }
     }
