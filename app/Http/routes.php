@@ -46,12 +46,7 @@ Route::resource('paydescrepancies', 'PayDescrepanciesController');
 Route::resource('payrollqueries', 'PayrollQueriesController');
 Route::resource('cashadvance', 'CashAdvanceController');
 Route::resource('overtimeform', 'OvertimeFormController');
-
-Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['Administrator']], function()
-{
-	Route::resource('user', 'UserController', ['only' => ['index']]);
-});
-
+Route::resource('user', 'UserController');
 
 /* Ajax routes */
 Route::get('leave-list', 'LeaveRequestController@getLeaveList');

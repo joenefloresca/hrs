@@ -15,12 +15,14 @@ use Redirect;
 use Input;
 use Session;
 use Datatables;
+use Route;
 
 class ChangeScheduleController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('roles', ['only' => ['index', 'edit', 'show']]);   
     }
     /**
      * Display a listing of the resource.
