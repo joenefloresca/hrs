@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4afd0236fe3828a0285d6f46a50a1f2d",
-    "content-hash": "7460214b53c04dd277ae301cab669e58",
+    "hash": "d36f34832a93eee45053ca7f0536e04f",
+    "content-hash": "4b83da84e72980a604beb96289a4f994",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1017,16 +1017,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v1.3.0",
+            "version": "v1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "ff76e1a660669bb56ba74ba0583fd8d41417bf39"
+                "reference": "c7e26a21ba357863de030f0b9e701c7d04593774"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/ff76e1a660669bb56ba74ba0583fd8d41417bf39",
-                "reference": "ff76e1a660669bb56ba74ba0583fd8d41417bf39",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/c7e26a21ba357863de030f0b9e701c7d04593774",
+                "reference": "c7e26a21ba357863de030f0b9e701c7d04593774",
                 "shasum": ""
             },
             "require": {
@@ -1061,7 +1061,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2016-03-17 16:11:57"
+            "time": "2016-03-18 20:34:03"
         },
         {
             "name": "phenx/php-font-lib",
@@ -2235,16 +2235,16 @@
         },
         {
             "name": "yajra/laravel-datatables-oracle",
-            "version": "v6.9.4",
+            "version": "v6.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yajra/laravel-datatables.git",
-                "reference": "22bc8c0f0ecb221ff4af3b51e812ddf369a3f1a8"
+                "reference": "3660c338b389037e1ec48b0a83a4e698422c0342"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/22bc8c0f0ecb221ff4af3b51e812ddf369a3f1a8",
-                "reference": "22bc8c0f0ecb221ff4af3b51e812ddf369a3f1a8",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/3660c338b389037e1ec48b0a83a4e698422c0342",
+                "reference": "3660c338b389037e1ec48b0a83a4e698422c0342",
                 "shasum": ""
             },
             "require": {
@@ -2288,7 +2288,72 @@
                 "laravel4",
                 "laravel5"
             ],
-            "time": "2016-03-18 00:05:08"
+            "time": "2016-03-22 04:29:19"
+        },
+        {
+            "name": "ytake/laravel-couchbase",
+            "version": "0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ytake/Laravel-Couchbase.git",
+                "reference": "15f8d02aae7854fa610933a5e4f4690d1ab91182"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ytake/Laravel-Couchbase/zipball/15f8d02aae7854fa610933a5e4f4690d1ab91182",
+                "reference": "15f8d02aae7854fa610933a5e4f4690d1ab91182",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/cache": "~5.0",
+                "illuminate/config": "~5.0",
+                "illuminate/console": "~5.0",
+                "illuminate/database": "~5.0",
+                "illuminate/encryption": "~5.0",
+                "illuminate/events": "~5.0",
+                "illuminate/session": "~5.0",
+                "illuminate/support": "~5.0",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "~1.0",
+                "phing/phing": "~2.0",
+                "phpunit/phpunit": "4.*",
+                "satooshi/php-coveralls": "*",
+                "symfony/console": "2.*",
+                "symfony/framework-bundle": "2.*"
+            },
+            "suggest": {
+                "ext-couchbase": "for n1ql query builder, use bucket type couchbase require"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ytake\\LaravelCouchbase\\": "src"
+                },
+                "files": [
+                    "src/transfer.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Yuuki Takezawa",
+                    "email": "yuuki.takezawa@comnect.jp.net"
+                }
+            ],
+            "description": "Couchbase providers for Laravel",
+            "keywords": [
+                "cache",
+                "couchbase",
+                "database",
+                "laravel",
+                "session"
+            ],
+            "time": "2016-02-20 14:05:39"
         }
     ],
     "packages-dev": [
@@ -2995,16 +3060,16 @@
         },
         {
             "name": "phpspec/phpspec",
-            "version": "2.4.1",
+            "version": "2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/phpspec.git",
-                "reference": "5528ce1e93a1efa090c9404aba3395c329b4e6ed"
+                "reference": "385ecb015e97c13818074f1517928b24d4a26067"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/phpspec/zipball/5528ce1e93a1efa090c9404aba3395c329b4e6ed",
-                "reference": "5528ce1e93a1efa090c9404aba3395c329b4e6ed",
+                "url": "https://api.github.com/repos/phpspec/phpspec/zipball/385ecb015e97c13818074f1517928b24d4a26067",
+                "reference": "385ecb015e97c13818074f1517928b24d4a26067",
                 "shasum": ""
             },
             "require": {
@@ -3069,7 +3134,7 @@
                 "testing",
                 "tests"
             ],
-            "time": "2016-01-01 10:17:54"
+            "time": "2016-03-20 20:34:32"
         },
         {
             "name": "phpspec/prophecy",

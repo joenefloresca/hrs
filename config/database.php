@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => 'mysql',
 
     /*
     |--------------------------------------------------------------------------
@@ -54,10 +54,10 @@ return [
 
         'mysql' => [
             'driver'    => 'mysql',
-            'host'      => env('DB_HOST', 'localhost'),
-            'database'  => env('DB_DATABASE', 'hrs'),
-            'username'  => env('DB_USERNAME', 'root'),
-            'password'  => env('DB_PASSWORD', ''),
+            'host'      => 'localhost',
+            'database'  => 'hrs',
+            'username'  => 'root',
+            'password'  => '',
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
@@ -83,6 +83,13 @@ return [
             'password' => env('DB_PASSWORD', ''),
             'charset'  => 'utf8',
             'prefix'   => '',
+        ],
+
+        'couchbase' => [
+            'driver'    => 'couchbase',
+            'host'      => 'couchbase://127.0.0.1',
+            'user'      => 'root',
+            'password'  => 'CheRambil27',
         ],
 
     ],
