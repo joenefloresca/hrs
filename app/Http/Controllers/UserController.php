@@ -7,9 +7,13 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
 use Datatables;
-use CouchbaseCluster;
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('roles', ['only' => ['index', 'edit', 'show']]);   
+    }
     /**
      * Display a listing of the resource.
      *
@@ -61,7 +65,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('user.edit')->with(array('user'=>$user));
+
     }
 
     /**
@@ -92,14 +98,12 @@ class UserController extends Controller
     }
 
 
-     public function getUserList()
+    public function getUserList()
     {
-        return \DB::connection('couchbase')
-        ->table('testing')->where('whereKey', 'value')->get();
-        // $user = User::select(['id','name','id_number','department'])->get();
-        // return Datatables::of($user)
-        // ->addColumn('action', function ($user) {
-        //         return '<a href="user/'.$user->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
-        //     })->make(true);
+        $user = User::select(['id','name','id_number','department'])->get();
+        return Datatables::of($user)
+        ->addColumn('action', function ($user) {
+                return '<a href="user/'.$user->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+            })->make(true);
     }
 }

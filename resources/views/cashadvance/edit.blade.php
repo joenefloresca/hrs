@@ -110,6 +110,21 @@ div#datepicker {
                                     <br>
                                     <div class="col-sm-10 col-md-offset-2"><input type="text" name="repayment_date" value="{{$cashadvance->repayment_date}}" class="form-control"></div>
                                 </div>
+
+                                @if(Auth::user()->role_id == 1)
+                                <div class="form-group"><label class="col-sm-2 control-label">Status</label>
+                                    <div class="col-sm-10">
+                                        {!! Form::select('status', [
+                                        '' => 'Choose One', 
+                                        '0' => 'Pending', 
+                                        '1' => 'Approved',
+                                        ],
+                                         $cashadvance->status, array('class' => 'form-control')) !!}
+                                        
+                                    </div>
+                                </div>
+                                @endif
+                                
                                 <div class="hr-line-dashed"></div>
                                 <div class="form-group">
                                     <div class="col-sm-4 col-sm-offset-2">

@@ -177,14 +177,30 @@ class OvertimeFormController extends Controller
          return view('overtimeform.edit')->with(array('header'=>$header));
      }
 
-       public function getOvertimeList()
+    public function getOvertimeList()
     {
-        $sched = OvertimeFormH::select(['id','name', 'employee_no', 'department', 'status', 'created_at'])->get();
-        return Datatables::of($sched)
-        ->addColumn('action', function ($sched) {
-                return '<a href="overtimeform/'.$sched->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
-                <a href="overtimeform/'.$sched->id.'" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i> View</a>';
-            })
-        ->make(true);
+        if(Auth::check())
+        {
+            if(Auth::user()->role_id != 1)
+            {
+                $sched = OvertimeFormH::select(['id','name', 'employee_no', 'department', 'status', 'created_at'])->where('submitted_by_id', '=', Auth::user()->id)->get();
+            }
+            else
+            {
+                $sched = OvertimeFormH::select(['id','name', 'employee_no', 'department', 'status', 'created_at'])->get();
+            }
+
+                return Datatables::of($sched)
+                ->addColumn('action', function ($sched) {
+                        return '<a href="overtimeform/'.$sched->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+                        <a href="overtimeform/'.$sched->id.'" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i> View</a>';
+                    })
+                ->make(true);
+        }
+        else
+        {
+          Auth::logout(); 
+          return Redirect::to('auth/login');
+        }
     }
 }

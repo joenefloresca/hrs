@@ -170,11 +170,27 @@ class LeaveRequestController extends Controller
 
     public function getLeaveList()
     {
-        $leave = LeaveRequest::select(['id','employee_name','employee_id','from_date','to_date', 'leave_type', 'department', 'status', 'created_at'])->get();
-        return Datatables::of($leave)
-        ->addColumn('action', function ($leave) {
-                return '<a href="leaverequest/'.$leave->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
-            })->make(true);
+        if(Auth::check())
+        {
+            if(Auth::user()->role_id != 1)
+            {
+                $leave = LeaveRequest::select(['id','employee_name','employee_id','from_date','to_date', 'leave_type', 'department', 'status', 'created_at'])->where('submitted_by_id', '=', Auth::user()->id)->get();   
+            }
+            else
+            {
+                 $leave = LeaveRequest::select(['id','employee_name','employee_id','from_date','to_date', 'leave_type', 'department', 'status', 'created_at'])->get();
+            }
+
+                return Datatables::of($leave)
+                ->addColumn('action', function ($leave) {
+                        return '<a href="leaverequest/'.$leave->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+                    })->make(true);
+        }
+        else
+        {
+          Auth::logout(); 
+          return Redirect::to('auth/login');
+        }
     }
 
     

@@ -2,13 +2,13 @@
 @section('content')
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2>Change Schedule Form</h2>
+        <h2>Create Overtime Form</h2>
         <ol class="breadcrumb">
             <li>
                 <a href="{{ url('home') }}">Home</a>
             </li>
             <li class="active">
-                <strong>Change Schedule Form</strong>
+                <strong>Create Overtime Form</strong>
             </li>
         </ol>
     </div>
@@ -21,7 +21,7 @@
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>Change Schedule Form</small></h5>
+                            <h5>Create Overtime Form</small></h5>
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -91,9 +91,9 @@
                                                     </tr>
 
                                                     <tr>
-                                                        <td><input type="text" name="date[]" class="form-control" id="date" placeholder="yyyy-mm-dd" /></td>
-                                                        <td><input type="text" name="from[]" class="form-control"  /></td>
-                                                        <td><input type="text" name="to[]" class="form-control"  /></td>
+                                                        <td><input type="text" name="date[]" class="form-control" id="date" placeholder="yyyy-mm-dd" data-mask="9999-99-99" /></td>
+                                                        <td><input type="text" name="from[]" class="form-control" placeholder="yyyy-mm-dd" data-mask="9999-99-99" /></td>
+                                                        <td><input type="text" name="to[]" class="form-control"  placeholder="yyyy-mm-dd" data-mask="9999-99-99" /></td>
                                                         <td><input type="text" name="no_of_hours[]" class="form-control"  /></td>
                                                         <td><input type="text" name="reason[]" class="form-control"  /></td>
                                                     </tr>
@@ -125,7 +125,7 @@
 @section('overtimeform-create')
 <script>
 $(document).on("click", "#addDetails", function() {
-  $('#ChangeDetail tr:last').after('<tr><td><input type="text" name="date[]" class="form-control" id="date" placeholder="yyyy-mm-dd" /></td><td><input type="text" name="from[]" class="form-control" /></td><td><input type="text" name="to[]" class="form-control" /></td><td><input type="text" name="no_of_hours[]" class="form-control" /></td><td><input type="text" name="reason[]" class="form-control" /></td></tr>');
+  $('#ChangeDetail tr:last').after('<tr><td><input type="text" name="date[]" class="form-control" id="date" placeholder="yyyy-mm-dd" data-mask="9999-99-99" /></td><td><input type="text" name="from[]" class="form-control" placeholder="yyyy-mm-dd" data-mask="9999-99-99" /></td><td><input type="text" name="to[]" class="form-control" placeholder="yyyy-mm-dd" data-mask="9999-99-99" /></td><td><input type="text" name="no_of_hours[]" class="form-control" /></td><td><input type="text" name="reason[]" class="form-control" /></td></tr>');
 });
 
 $(document).on("load", "#date", function() {

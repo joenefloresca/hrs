@@ -113,6 +113,7 @@ div#datepicker {
                                     </div>
                                 </div>
 
+                                 @if(Auth::user()->role_id == 1)
                                 <div class="form-group"><label class="col-sm-2 control-label">Status</label>
                                     <div class="col-sm-10">
                                         {!! Form::select('status', [
@@ -124,6 +125,7 @@ div#datepicker {
                                         
                                     </div>
                                 </div>
+                                @endif
                         
                                 <div class="hr-line-dashed"></div>
                                 <div class="form-group">

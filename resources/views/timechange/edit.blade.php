@@ -117,6 +117,7 @@
                                       </div>
                                 </div>
 
+                                @if(Auth::user()->role_id == 1)
                                 <div class="form-group">
                                   <label for="select" class="col-lg-2 control-label">Status</label>
                                       <div class="col-lg-10">
@@ -128,6 +129,7 @@
                                             $timechange->status, array('class' => 'form-control')) !!}
                                       </div>
                                 </div>
+                                @endif
 
                                 <div class="form-group">
                                     <label class="col-sm-10 col-sm-offset-2"><i>Note: This request form should be submitted a week before the covered cut-off. Non compliance with the scheduled submission would mean processing of "time clock change" the following cut-off.</i></label>

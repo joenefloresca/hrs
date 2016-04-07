@@ -153,6 +153,7 @@ class CashAdvanceController extends Controller
             $cashadvance->terms              = Input::get('terms');
             $cashadvance->amount             = Input::get('amount');
             $cashadvance->repayment_date     = Input::get('repayment_date');
+            $cashadvance->status             = Input::get('status');
             $cashadvance->submitted_by_id    = Auth::user()->id;
             $cashadvance->save();
 
@@ -165,14 +166,31 @@ class CashAdvanceController extends Controller
         }
     }
 
-      public function getCashAdvance()
+    public function getCashAdvance()
     {
-        $cashadvance = CashAdvance::select(['id','employees_name','email','requested_amount',  'status', 'created_at'])->get();
-        return Datatables::of($cashadvance)
-        ->addColumn('action', function ($cashadvance) {
-                return '<a href="cashadvance/'.$cashadvance->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
-            })
-            ->make(true);
+        if(Auth::check())
+        {
+            if(Auth::user()->role_id != 1)
+            {
+                $cashadvance = CashAdvance::select(['id','employees_name','email','requested_amount',  'status', 'created_at'])->where('submitted_by_id', '=', Auth::user()->id)->get();
+            }
+            else
+            {
+                 $cashadvance = CashAdvance::select(['id','employees_name','email','requested_amount',  'status', 'created_at'])->get();
+            }
+
+                return Datatables::of($cashadvance)
+                ->addColumn('action', function ($cashadvance) {
+                        return '<a href="cashadvance/'.$cashadvance->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+                    })
+                    ->make(true);
+        }
+        else
+        {
+          Auth::logout(); 
+          return Redirect::to('auth/login');
+        }
+
     }
 
     /**

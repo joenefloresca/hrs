@@ -22,7 +22,7 @@ class ChangeScheduleController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('roles', ['only' => ['index', 'edit', 'show']]);   
+        //$this->middleware('roles', ['only' => ['index', 'edit', 'show']]);   
     }
     /**
      * Display a listing of the resource.
@@ -177,12 +177,29 @@ class ChangeScheduleController extends Controller
 
     public function getScheduleList()
     {
-        $sched = ChangeScheduleH::select(['id','employee_name','department','change_type','status', 'created_at'])->get();
-        return Datatables::of($sched)
-        ->addColumn('action', function ($sched) {
-                return '<a href="changeschedule/'.$sched->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
-                <a href="changeschedule/'.$sched->id.'" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i> View</a>';
-            })
-        ->make(true);
+        if(Auth::check())
+        {
+            if(Auth::user()->role_id != 1)
+            {
+                $sched = ChangeScheduleH::select(['id','employee_name','department','change_type','status', 'created_at'])->where('submitted_by_id', '=', Auth::user()->id)->get();
+            }
+            else
+            {
+                $sched = ChangeScheduleH::select(['id','employee_name','department','change_type','status', 'created_at'])->get();
+            }
+
+                return Datatables::of($sched)
+                ->addColumn('action', function ($sched) {
+                        return '<a href="changeschedule/'.$sched->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+                        <a href="changeschedule/'.$sched->id.'" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i> View</a>';
+                    })
+                ->make(true);
+        }
+        else
+        {
+          Auth::logout(); 
+          return Redirect::to('auth/login');
+        }
+        
     }
 }

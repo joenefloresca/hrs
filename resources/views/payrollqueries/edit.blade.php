@@ -128,6 +128,7 @@
                                     <div class="col-sm-10"><input type="text" name="date_acknowledge" id="date_acknowledge" class="form-control" value="{{$payroll->date_acknowledge}}"></div>
                                 </div>
 
+                                @if(Auth::user()->role_id == 1)
                                 <div class="form-group"><label class="col-sm-2 control-label">Status</label>
                                     <div class="col-sm-10">
                                         {!! Form::select('status', [
@@ -139,6 +140,7 @@
                                         
                                     </div>
                                 </div>
+                                @endif
 
                                 <div class="hr-line-dashed"></div>
 

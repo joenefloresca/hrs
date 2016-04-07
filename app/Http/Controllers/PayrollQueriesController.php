@@ -187,12 +187,28 @@ class PayrollQueriesController extends Controller
 
      public function getPayrollQueries()
     {
-        $payrollqueries = Payrollqueries::select(['id','name','date','department','payroll', 'created_at', 'status'])->get();
-        return Datatables::of($payrollqueries)
-        ->addColumn('action', function ($payrollqueries) {
-                return '<a href="payrollqueries/'.$payrollqueries->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
-            })
-            ->make(true);
+        if(Auth::check())
+        {
+            if(Auth::user()->role_id != 1)
+            {
+                $payrollqueries = Payrollqueries::select(['id','name','date','department','payroll', 'created_at', 'status'])->where('submitted_by_id', '=', Auth::user()->id)->get();
+            }
+            else
+            {
+                 $payrollqueries = Payrollqueries::select(['id','name','date','department','payroll', 'created_at', 'status'])->get();
+            }
+
+                return Datatables::of($payrollqueries)
+                ->addColumn('action', function ($payrollqueries) {
+                        return '<a href="payrollqueries/'.$payrollqueries->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+                    })
+                    ->make(true);
+        }
+        else
+        {
+          Auth::logout(); 
+          return Redirect::to('auth/login');
+        }
     }
 
 

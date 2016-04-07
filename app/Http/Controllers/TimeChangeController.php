@@ -172,14 +172,30 @@ class TimeChangeController extends Controller
 
     public function getTimeChangeList()
     {
-        $timechange = TimeChange::select(['id','employee_name','dateto_change','work_schedule','clock_in', 'clock_out', 'change_reason', 'no_inout_reason', 'form_required', 'status', 'created_at'])->get();
-        return Datatables::of($timechange)
-        ->addColumn('action', function ($timechange) {
-                return '<a href="timechange/'.$timechange->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
-            })
-         ->editColumn('created_at', function ($timechange) {
-                return $timechange->created_at->format('Y-m-d');
-            })
-        ->make(true);
+        if(Auth::check())
+        {
+            if(Auth::user()->role_id != 1)
+            {
+                $timechange = TimeChange::select(['id','employee_name','dateto_change','work_schedule','clock_in', 'clock_out', 'change_reason', 'no_inout_reason', 'form_required', 'status', 'created_at'])->where('submitted_by_id', '=', Auth::user()->id)->get();
+            }
+            else
+            {
+                 $timechange = TimeChange::select(['id','employee_name','dateto_change','work_schedule','clock_in', 'clock_out', 'change_reason', 'no_inout_reason', 'form_required', 'status', 'created_at'])->get();
+            }
+
+                return Datatables::of($timechange)
+                ->addColumn('action', function ($timechange) {
+                        return '<a href="timechange/'.$timechange->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+                    })
+                 ->editColumn('created_at', function ($timechange) {
+                        return $timechange->created_at->format('Y-m-d');
+                    })
+                ->make(true);
+        }
+        else
+        {
+          Auth::logout(); 
+          return Redirect::to('auth/login');
+        }
     }
 }
