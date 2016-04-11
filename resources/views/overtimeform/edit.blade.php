@@ -69,11 +69,11 @@
                                     <div class="col-sm-10">
                                         {!! Form::select('department', [
                                         '' => 'Choose One', 
-                                        'MIS' => 'MIS', 
-                                        'IT' => 'IT',
-                                        'Finance' => 'Finance',
-                                        'Paternity' => 'Paternity',
-                                        'Operations' => 'Operations',
+                                        'MIS Department' => 'MIS Department', 
+                                        'IT Department' => 'IT Department',
+                                        'Operations Department' => 'Operations Department',
+                                        'Finance Department' => 'Finance Department',
+                                        'Facilities Department' => 'Facilities Department',
                                         ],
                                          $header->department, array('class' => 'form-control')) !!}
                                     </div>

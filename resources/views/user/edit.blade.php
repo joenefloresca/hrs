@@ -39,7 +39,7 @@ div#datepicker {
                             </div>
                         </div>
                         <div class="ibox-content">
-                            {!! Form::model($user, array('route' => array('user.update', $user->id), 'method' => 'PUT', 'class' => 'form-horizontal')) !!}
+                            {!! Form::model($user, array('route' => array('user.update', $user->id), 'method' => 'PUT', 'class' => 'form-horizontal', 'enctype' => 'multipart/form-data')) !!}
                                 @if (count($errors) > 0)
                                 <div class="alert alert-danger">
                                         <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -65,6 +65,27 @@ div#datepicker {
 
                                 <div class="form-group"><label class="col-sm-2 control-label">ID Number</label>
                                     <div class="col-sm-10"><input type="text" name="id_number" id="id_number" value="{{$user->id_number}}" class="form-control"></div>
+                                </div>
+
+                                <div class="form-group"><label class="col-sm-2 control-label">Department</label>
+                                    <div class="col-sm-10">
+                                        {!! Form::select('department', [
+                                        '' => 'Choose One', 
+                                        'MIS Department' => 'MIS Department', 
+                                        'IT Department' => 'IT Department',
+                                        'Operations Department' => 'Operations Department',
+                                        'Finance Department' => 'Finance Department',
+                                        'Facilities Department' => 'Facilities Department',
+                                        ],
+                                         $user->department, array('class' => 'form-control')) !!}
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Profile Picture</label>
+                                    <div class="col-md-6">
+                                        <input type="file" class="form-control" name="file" id="file">
+                                    </div>
                                 </div>
                         
                                 <div class="hr-line-dashed"></div>

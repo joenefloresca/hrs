@@ -68,7 +68,6 @@ class AuthController extends Controller
     {
         return User::create([
             'name' => $data['name'],
-           // 'email' => $data['email'],
             'id_number'    => $data['id_number'],
             'ameyo_login'  => $data['ameyo_login'],
             'department'   => $data['department'],

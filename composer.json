@@ -9,7 +9,8 @@
         "laravel/framework": "5.1.*",
         "laravelcollective/html": "~5.0",
         "yajra/laravel-datatables-oracle": "~6.0",
-        "ytake/laravel-couchbase": "^0.2.0"
+        "ytake/laravel-couchbase": "^0.2.0",
+        "intervention/image": "^2.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

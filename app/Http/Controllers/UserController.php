@@ -7,6 +7,12 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
 use Datatables;
+use Validator;
+use Input;
+use Redirect;
+use Image;
+use Session;
+
 class UserController extends Controller
 {
     public function __construct()
@@ -42,7 +48,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**
@@ -67,7 +73,6 @@ class UserController extends Controller
     {
         $user = User::find($id);
         return view('user.edit')->with(array('user'=>$user));
-
     }
 
     /**
@@ -80,10 +85,35 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $rules = array(
-            'employee_name' => 'required',
-            'department'    => 'required',
-            'change_type'   => 'required',
+            'name' => 'required',
+            'file' => 'required',
         );
+
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->fails())
+        {
+            return Redirect::to('user/'.$id.'/edit')->withInput()->withErrors($validator);
+        }
+        else
+        {
+
+            /*Upload Profile Picture to File System*/
+            $image = Input::file('file');
+            $filename  = time() . '.' . $image->getClientOriginalExtension();
+            $path = public_path('img/users/' . $filename);
+            Image::make($image->getRealPath())->resize(60, 60)->save($path);
+
+            /* Save profile details */
+
+            $user = User::find($id);
+            $user->name         = Input::get('name');
+            $user->department   = Input::get('department');
+            $user->pic_path     = $filename;
+            $user->save();
+
+            Session::flash('alert-success', 'Profile Updated Successfully!');
+            return Redirect::to('user/'.$id.'/edit');
+        }
     }
 
     /**

@@ -56,12 +56,12 @@
                 <div class="form-group">
                     <select class="form-control" name="department">
                         <option value="">Choose One</option>
-                        <option value="IT">IT</option>
-                        <option value="Operations">Operations</option>
-                        <option value="Finance">Finance</option>
-                        <option value="Facilities">Facilities</option>
+                        <option value="MIS Department">MIS Department</option>
+                        <option value="IT Department">IT Department</option>
+                        <option value="Operations Department">Operations Department</option>
+                        <option value="Finance Department">Finance Department</option>
+                        <option value="Facilities Department">Facilities Department</option>
                         <option value="Client Services">Client Services</option>
-                        <option value="Agent">Agent</option>
                     </select>
                 </div>
 
